@@ -1,8 +1,12 @@
-import React from 'react'
-import { AppRouter } from './Routes/AppRouter'
 
+import { AppRouter } from './Routes/AppRouter'
+import {Store} from "./Store/Store"
+
+import { Provider } from "react-redux";
 export const VinanceApp = () => {
   return (
-    <AppRouter/>
+    <Provider store={Store}>
+          <AppRouter/>
+    </Provider> 
   )
 }
