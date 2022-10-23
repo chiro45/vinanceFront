@@ -1,0 +1,38 @@
+$primaryColor: #9b205c;
+$secondaryColor: #b7a3af;
+.ContainerHome{
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow-x: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Home__containerprodDestacados{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+
+    b{
+        background-color: $primaryColor;
+        flex: 1;
+        height: 2px;
+        width: 200px;
+        opacity: .5;
+    }
+    h2{
+        margin: 2rem;
+
+    }
+}
+
+.productSelected{
+    z-index: 400;
+    display: flex;
+    margin-bottom: 4rem;
+    width: 60vw;
+    justify-content: space-around;
+
+}
