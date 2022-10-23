@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+
+}
+body,html{
+  overflow-x:hidden;
+}
+
+
+
+$primaryColor: #9b205c;
+$secondaryColor: #b7a3af;
+
+
+
+//defines styles to scroll-bar
+/*========== SCROLL BAR ==========*/
+::-webkit-scrollbar {
+    width: .8rem; //background
+    background-color: #fff;
+    height: 200px
+   
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    //scroll bar
+    background-color: rgb(65, 61, 64);
+    //effect hover       ☝
+    &:hover {
+      background-color: darken($color: $primaryColor, $amount: 10);
+    }
+  }
