@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 import { Carrousel } from "../../UI/Carrousel/CarrouselHome/Carrousel"
 import { Footer } from "../../UI/Footer/Footer"
@@ -7,7 +7,7 @@ import { Header } from "../../UI/Header/Header"
 import "./Home.scss"
 
 export const Home = () => {
-  const navigate = useNavigate()
+ 
 const arrProductSelected = [
   {
     id:0,
@@ -56,7 +56,10 @@ discount: "2550"
           
         {
           arrProductSelected.map((vino,i)=>(
-            <CardItemList key={i} src={vino.src} varietal={vino.varietal} index={i} id={vino.id} name={vino.name} price={vino.price} discount={vino.discount} navigate={navigate} />
+            <CardItemList 
+            key={i} 
+            vino={vino}
+            />
           ))
         }
         </div>
