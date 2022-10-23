@@ -1,0 +1,22 @@
+.CarrouselHome{
+    width: 100vw !important;
+    display: flex;
+    justify-content: center;
+}
+.carrousel{
+    width: 80vw !important;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carrouselItem{
+    width: 80vw !important;
+    height: 60vh !important;
+    object-fit: fill;
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
