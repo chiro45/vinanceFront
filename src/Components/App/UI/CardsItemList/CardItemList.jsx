@@ -1,14 +1,23 @@
 import { MDBBtn } from "mdb-react-ui-kit"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { addActiveProduct, removeActiveProduct } from "../../../../Actions/Product"
 import "./CardItemList.scss"
 
-export const CardItemList = ({ id, varietal, index, name, price, src, discount = null, navigate }) => {
-
+export const CardItemList = ({vino, index}) => {
+    const { varietal, name, price, src, discount } =  vino
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(removeActiveProduct())
+    }, []);
     const handleClickProduct = () => {
         navigate('/product')
-       
+        dispatch(addActiveProduct(vino))
     }
     const handleClickAddCarrito = () => {
-        
+
     }
 
     return (
