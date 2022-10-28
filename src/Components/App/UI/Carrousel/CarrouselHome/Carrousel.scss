@@ -9,7 +9,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
+
 .carrouselItem{
     width: 80vw !important;
     height: 60vh !important;
@@ -19,4 +21,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6% !important;
+    padding: 0;
+    color: rgb(255, 255, 255) !important;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 1 !important;
+    transition: opacity .15s ease;
+    span{
+        width: 4.4rem !important;
+        height: 5.4rem !important;
+    }
 }

@@ -23,9 +23,18 @@ export const Header = () => {
         </div>
         <div className="HeaderContainerPricicpal__container-itemsUser">
             <ul>
-              <li>User <MDBIcon far icon="user-circle" /></li>
-              <li>Mis Compras <MDBIcon fas icon="clipboard-check" /></li>
-              <li>Carrito <MDBIcon fas icon="shopping-cart" /></li>
+              {
+              [
+                {text: "Login",icon:"sign-in-alt"},
+                {text: "Mis Compras",icon:"clipboard-check"},
+                {text: "Carrito",icon:"shopping-cart"},
+              
+              ].map(({text, icon})=>(
+                <li>{text}  <MDBIcon fas icon={`${icon}`} /></li>
+              ))
+
+              }
+           
             </ul>
         </div>
       </div>

@@ -85,12 +85,13 @@ $secondaryColor: #b7a3af;
             color: #fff;
             font-size: 1.2rem;
             margin-left: 1.2rem;
-          
-           
+            
+            
         }
         li:hover{
+            transition: transform .3s ease ;
             cursor: pointer;
-        
+            transform: scale(1.1);
             border-bottom: 1px solid $primaryColor;
         }
     }

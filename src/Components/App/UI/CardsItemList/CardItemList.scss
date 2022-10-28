@@ -9,6 +9,7 @@
     transition: .3s ease transform;
 }
 .ContainerCardItemList:hover{
+    cursor: pointer;
     transform: scale(1.2);
     z-index: 400;
 }  

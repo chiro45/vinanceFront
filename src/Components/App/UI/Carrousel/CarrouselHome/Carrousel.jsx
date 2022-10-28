@@ -10,15 +10,15 @@ export const Carrousel = () => {
       <MDBCarousel showIndicators showControls className="carrousel">
       <MDBCarouselItem className="carrouselItem"
         itemId={1}
-        src='https://media.traveler.es/photos/61376b20b57001fc862c8183/16:9/w_2580,c_limit/47105.png'
+        src='https://enolife.com.ar/es/wp-content/uploads/2021/09/01-1024x440.jpg'
         alt='...'
       >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Bodega</h5>
+        <p>bodegosa</p>
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={2}
-        src='https://www.argentinaenviaje.com/wp-content/uploads/2021/07/Bodegas-Mendoza-FincaDecero-1280x720.jpg'
+        src='https://cdn2.civitatis.com/argentina/mendoza/tour-privado-bodegas-mendoza-grid.jpg'
         alt='...'
       >
         <h5>First slide label</h5>
@@ -26,7 +26,7 @@ export const Carrousel = () => {
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={3}
-        src='https://www.argentinaenviaje.com/wp-content/uploads/2021/07/Bodegas-Mendoza-FINCASOPHENIA.jpg'
+        src='https://www.kahuak.com.ar/img/fotos/principales/home-toursvinos01.jpg'
         alt='...'
       >
         <h5>First slide label</h5>

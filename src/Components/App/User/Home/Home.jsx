@@ -1,8 +1,12 @@
 
+import { useNavigate } from "react-router-dom"
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 import { Carrousel } from "../../UI/Carrousel/CarrouselHome/Carrousel"
 import { Footer } from "../../UI/Footer/Footer"
 import { Header } from "../../UI/Header/Header"
+
+
+import turismo from "../../../../Assets/imgs/turismo.jpeg"
 
 import "./Home.scss"
 
@@ -41,17 +45,17 @@ discount: "2550"
 }
 
 ]
-
+const navigate = useNavigate()
   return (
     <div className="ContainerHome">
       <Header/>
       <Carrousel/>
       <div className="Home__containerprodDestacados">
         <b></b>
-        <h2>Productos Destacados</h2>
+        <h2>Ofertas</h2>
         <b></b>
       </div>
-      <div> 
+      
         <div className="productSelected">
           
         {
@@ -63,8 +67,27 @@ discount: "2550"
           ))
         }
         </div>
-      
+        <div className="Home__containerprodDestacados">
+        <b></b>
+        <h2>Servicios</h2>
+        <b></b>
       </div>
+          <div className="Container__accesories">
+            {
+              [
+              {path:"/accesorios",text:"Accesorios", src:"https://www.dulcehogar.mx/wp-content/uploads/2020/04/Accesorios-para-vino-0.jpg"},
+              {path:"/vinos",text:"Vinos Premium", src:"https://cdn.shopify.com/s/files/1/0425/0642/0390/products/ComiteWines-Foto-_MISEREREOK-IMG_5132_7a6ca59e-a932-40be-a0ea-63900c11c426.jpg?v=1623092025"},
+              {path:"/turismo",text:"Turismo", src:turismo}
+              ].map(({text, src,path})=>(
+                <div onClick={()=>{navigate(path)}} style={{backgroundImage: `url(${src})`}} className="containerAccesories">
+                  <h2>{text}</h2>
+                </div>
+              ))
+            }
+          </div>
+       
+      
+      
       
       <Footer/>
     
