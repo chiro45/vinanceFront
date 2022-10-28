@@ -2,13 +2,13 @@
 
 import { MDBBtn, MDBIcon, MDBInput } from "mdb-react-ui-kit"
 import "./Header.scss"
-import logo from "../../../../Assets/Vinance.png"
+
 export const Header = () => {
   return (
     <div className="HeaderContainerPrincipal">
       <div className="HeaderContainerPricicpal__containerElements">
         <div className="HeaderContainerPricicpal-containerLogo">
-          <img src={`${logo}`}/>
+          <h2 style={{fontSize:"2.4vw", color: "#fff", fontStyle:"italic", margin:"0"}}>Vinance</h2>
         </div>
         <div className="HeaderContainerPricicpal__container-search">
           <div className="HeaderContainerPricicpal__input">
