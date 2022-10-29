@@ -19,15 +19,17 @@ $secondaryColor: #b7a3af;
 ::-webkit-scrollbar {
     width: .8rem; //background
     background-color: #fff;
-    height: 200px
+    height: 20% !important;
    
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
     //scroll bar
+    height: 20% !important;
     background-color: rgb(65, 61, 64);
     //effect hover       ☝
     &:hover {
+      height: 20% !important;
       background-color: darken($color: $primaryColor, $amount: 10);
     }
   }

@@ -28,7 +28,7 @@ export const CardItemList = ({vino, index}) => {
                 <div className="CardContainerItemList__Varietal"><p>{varietal}</p></div>
                 <div className="CardContainerItemList__Nombre"><p>{name}</p></div>
                 {
-                    discount !== null
+                    discount !== undefined
                         ? <div className="CardContainerItemList__precio"><p className="tachado">${price}</p></div>
                         : null
                 }
