@@ -2,7 +2,11 @@
 import "./Carrousel.scss"
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 
-
+import img1 from "../../../../../Assets/imgs/mujerCaminando.png"
+import img3 from "../../../../../Assets/imgs/paisaje.png"
+import img2 from "../../../../../Assets/imgs/vinopaisaje.png"
+import img4 from "../../../../../Assets/imgs/vinopaisaje2.png"
+import img5 from "../../../../../Assets/imgs/paisaje5.png"
 export const Carrousel = () => {
   
   return (
@@ -10,15 +14,15 @@ export const Carrousel = () => {
       <MDBCarousel showIndicators showControls className="carrousel">
       <MDBCarouselItem className="carrouselItem"
         itemId={1}
-        src='https://enolife.com.ar/es/wp-content/uploads/2021/09/01-1024x440.jpg'
+        src={img1}
         alt='...'
       >
         <h5>Bodega</h5>
         <p>bodegosa</p>
       </MDBCarouselItem>
-      <MDBCarouselItem className="carrouselItem"
+      <MDBCarouselItem className="carrouselItem" 
         itemId={2}
-        src='https://cdn2.civitatis.com/argentina/mendoza/tour-privado-bodegas-mendoza-grid.jpg'
+        src={img2}
         alt='...'
       >
         <h5>First slide label</h5>
@@ -26,7 +30,7 @@ export const Carrousel = () => {
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={3}
-        src='https://www.kahuak.com.ar/img/fotos/principales/home-toursvinos01.jpg'
+        src={img3}
         alt='...'
       >
         <h5>First slide label</h5>
@@ -34,7 +38,15 @@ export const Carrousel = () => {
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={4}
-        src='https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_900,h_492/https://etheriamagazine.com/wp-content/uploads/2019/04/Mendoza-bodega-A16.jpg'
+        src={img4}
+        alt='...'
+      >
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </MDBCarouselItem>
+      <MDBCarouselItem className="carrouselItem"
+        itemId={5}
+        src={img5}
         alt='...'
       >
         <h5>First slide label</h5>

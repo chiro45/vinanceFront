@@ -20,7 +20,6 @@ $secondaryColor: #b7a3af;
 }
 
 .containerPrincipal__login {
-
     background: #fff;
     margin-left: 33vw;
     width: 60vh;
@@ -102,12 +101,15 @@ $secondaryColor: #b7a3af;
 .container__itemsLogin-linKregister {
     margin-top: -2rem;
     text-align: center;
+    &:hover{
+        cursor: pointer;
+        color: $primaryColor;
+    }
 }
 
 .container__itemsLogin-buttonIngresar {
     display: flex;
     justify-content: center;
-
     button {
         width: 100%;
         background-color: #9b205c !important;

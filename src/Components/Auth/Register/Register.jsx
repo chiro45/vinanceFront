@@ -2,15 +2,53 @@
 import { MDBBtn } from "mdb-react-ui-kit"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import { useForm } from "../../../Hooks/useForm"
 import "./Register.scss"
 export const Register = () => {
 
   const navigate = useNavigate()
 
+  
+  const [formValues, handleInputChange] = useForm({
+    user:"",
+    password:"",
+    passwordConfirm:"",
+    date: undefined,
+    address: ""
+  })
+  const {
+  user,
+  password,
+  passwordConfirm,
+  date,
+  address
+  } = formValues
+
   const onRegister = ()=>{
-    Swal.fire("Registrado!","se ha regsitrado con exito", "success")
-    navigate("/login")
-  }
+    //  fetch("", {
+    //    method: "POST",
+    //    headers: {
+    //      Accept: "application/json, text/plain, */*",
+    //      "Content-Type": "application/json",
+    //    },
+    //    body: JSON.stringify({
+    //     user:user,
+    //     password:password,
+    //     passwordConfirm:passwordConfirm,
+    //     date: date,
+    //     address: address
+    //    })
+    //  })
+    //    .then((response) => response.json())
+    //    .then((data) => console.log(data))
+    //    .catch((err) => {
+    //      console.log(err);
+    //    });
+     
+ 
+  //   Swal.fire("Registrado!","se ha regsitrado con exito", "success")
+  //   navigate("/login")
+   }
 
   return (
     <div className="containerPrincipal">
@@ -22,23 +60,47 @@ export const Register = () => {
             </div>
             <div>
               <label className="labelRegister">Ingrese un nombre de usuario</label>
-              <input className="inputRegister" type={"text"}/>
+              <input 
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"user"} 
+              value={user}
+              type={"text"}/>
             </div>
             <div>
               <label className="labelRegister">Ingrese una contraseña</label>
-              <input className="inputRegister" type={"text"}/>
+              <input 
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"password"} 
+              value={password}
+              type={"text"}/>
             </div>
             <div>
               <label className="labelRegister">Repita la contraseña</label>
-              <input className="inputRegister" type={"text"}/>
+              <input
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"passwordConfirm"} 
+              value={passwordConfirm}
+              type={"text"}/>
             </div>
             <div>
               <label className="labelRegister">Fecha de nacimiento</label>
-              <input className="inputRegister date" type={"date"}/>
+              <input 
+              onChange={handleInputChange}
+              name={"date"} 
+              value={date} 
+              className="inputRegister date" type={"date"}/>
             </div>
             <div>
               <label className="labelRegister">Domicilio</label>
-              <input className="inputRegister" type={"text"}/>
+              <input
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"address"} 
+              value={address}
+              type={"text"}/>
             </div>
             
 

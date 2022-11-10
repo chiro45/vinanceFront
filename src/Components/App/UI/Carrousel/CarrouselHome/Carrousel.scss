@@ -15,7 +15,7 @@
 .carrouselItem{
     width: 80vw !important;
     height: 60vh !important;
-    object-fit: fill;
+    object-fit: cover;
     pointer-events: none;
     user-select: none;
     display: flex;
