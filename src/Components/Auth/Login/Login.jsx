@@ -24,28 +24,28 @@ export const Login = () => {
   const navigate = useNavigate()
 
   const onLogin = () => {
-    console.log(password, user)
-    // fetch("", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     user: user,
-    //     password: password,
-    //   })
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    // Swal.fire("Login exitoso "," haz ingresado correctamente","success")
-    // navigate("/homeuser")
+  
+     fetch("", {
+       method: "POST",
+       headers: {
+         Accept: "application/json, text/plain, */*",
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         username: user,
+         password: password,
+       })
+     })
+       .then((response) => response.json())
+       .then((data) => console.log(data))
+       .catch((err) => {
+         console.log(err);
+         Swal.fire("Intenta Nuevamente","Usuario o contraseña incorrecta","error")
+       });
+     Swal.fire("Login exitoso "," haz ingresado correctamente","success")
+     //navigate("/homeuser")
   }
 
-  const [values, setValues]= useState(false)
   return (
     <div className="containerPrincipal">
       <div className="filter">
