@@ -76,7 +76,7 @@ $secondaryColor: #b7a3af;
     display: flex;
     justify-content: center;
     align-items: center;
-    div{
+   .inicioContainer{
         display: flex;
         margin-left: 10%;
         height: 100%;
@@ -92,4 +92,13 @@ $secondaryColor: #b7a3af;
             margin-top: 1rem;
         }
     }
+}
+.logo-img{
+    height: 8vh;
+    width: 8vw;
+}
+.inicio__ContainerTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

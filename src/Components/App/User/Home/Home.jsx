@@ -50,30 +50,31 @@ export const Home = () => {
   return (
     <div className="ContainerHome">
       <div className="inicio__containerHeader">
-         <div>
-         <div>
-              <h2>Vinance</h2>    
+        <div className="inicioContainer">
+          <div className="inicio__ContainerTitle">
+            <h2>Vinance</h2>
+            <div>
+              <img src="https://d2r9epyceweg5n.cloudfront.net/stores/097/048/themes/common/logo-1852450306-1480016030-12b8c3de573751b06e7fa6bd160efeda1512201795-480-0.png?0" alt="Wines Argentina Express" class="logo-img" />
+            </div>
           </div>
           <div className="HeaderContainerPricicpal__container-itemsUser">
             <ul>
               {
-              [
-                {text: "Ingresar",icon:"sign-in-alt", path: "/login"},
-                {text: "Registrarse",icon:"clipboard-check", path: "/register"},
-                {text: "Tienda",icon:"shopping-cart", path: "/store"},
-              
-              ].map(({text, icon, path}, i)=>(
-                <li key={i} onClick={()=>navigate(path)}>{text}  <MDBIcon fas icon={`${icon}`} /></li>
-              ))
+                [
+                  { text: "Tienda", icon: "shopping-cart", path: "/store" },
+                  { text: "Ingresar", icon: "sign-in-alt", path: "/login" },
+                  { text: "Registrarse", icon: "clipboard-check", path: "/register" },
 
+                ].map(({ text, icon, path }, i) => (
+                  <li key={i} onClick={() => navigate(path)}>{text}  <MDBIcon fas icon={`${icon}`} /></li>
+                ))
               }
-           
             </ul>
+          </div>
         </div>
-          </div>       
       </div>
       <Carrousel />
-     <div className="Home__containerprodDestacados">
+      <div className="Home__containerprodDestacados">
         <b></b>
         <h2>Ofertas</h2>
         <b></b>
@@ -108,9 +109,6 @@ export const Home = () => {
           ))
         }
       </div>
-
-        
-
       <Footer />
 
     </div>

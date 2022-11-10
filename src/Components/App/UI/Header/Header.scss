@@ -12,8 +12,8 @@ $secondaryColor: #b7a3af;
 
 }
 .HeaderContainerPricicpal-containerLogo{
-    width: 11%;
-
+    display: flex;
+align-items: center;
 }
 .HeaderContainerPricicpal__containerElements{
     height: 100%;

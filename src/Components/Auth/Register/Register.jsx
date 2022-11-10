@@ -14,37 +14,42 @@ export const Register = () => {
     password:"",
     passwordConfirm:"",
     date: undefined,
-    address: ""
+    email:"",
+    name:""
   })
   const {
   user,
+  name,
   password,
   passwordConfirm,
-  date,
-  address
+  email,
   } = formValues
 
   const onRegister = ()=>{
-    //  fetch("", {
-    //    method: "POST",
-    //    headers: {
-    //      Accept: "application/json, text/plain, */*",
-    //      "Content-Type": "application/json",
-    //    },
-    //    body: JSON.stringify({
-    //     user:user,
-    //     password:password,
-    //     passwordConfirm:passwordConfirm,
-    //     date: date,
-    //     address: address
-    //    })
-    //  })
-    //    .then((response) => response.json())
-    //    .then((data) => console.log(data))
-    //    .catch((err) => {
-    //      console.log(err);
-    //    });
-     
+      if(password === passwordConfirm){
+        fetch("", {
+          method: "POST",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+           username:user,
+           name:name,
+           email: email,
+           password:password,
+           
+          })
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((err) => {
+            console.log(err);
+          });
+       
+      }else{
+        Swal.fire("Error!","Contraseñas no coinciden", "error")
+      }
  
   //   Swal.fire("Registrado!","se ha regsitrado con exito", "success")
   //   navigate("/login")
@@ -68,6 +73,24 @@ export const Register = () => {
               type={"text"}/>
             </div>
             <div>
+              <label className="labelRegister">Nombre</label>
+              <input 
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"name"} 
+              value={name}
+              type={"text"}/>
+            </div>
+            <div>
+              <label className="labelRegister">Email</label>
+              <input 
+              className="inputRegister"
+              onChange={handleInputChange}
+              name={"email"} 
+              value={email}
+              type={"email"}/>
+            </div>
+            <div>
               <label className="labelRegister">Ingrese una contraseña</label>
               <input 
               className="inputRegister"
@@ -85,15 +108,15 @@ export const Register = () => {
               value={passwordConfirm}
               type={"text"}/>
             </div>
-            <div>
+            {/* <div>
               <label className="labelRegister">Fecha de nacimiento</label>
               <input 
               onChange={handleInputChange}
               name={"date"} 
               value={date} 
               className="inputRegister date" type={"date"}/>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <label className="labelRegister">Domicilio</label>
               <input
               className="inputRegister"
@@ -101,7 +124,7 @@ export const Register = () => {
               name={"address"} 
               value={address}
               type={"text"}/>
-            </div>
+            </div> */}
             
 
             <div className="container__itemsLogin-buttonIngresar">
