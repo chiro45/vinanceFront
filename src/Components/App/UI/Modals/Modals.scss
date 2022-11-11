@@ -1,0 +1,65 @@
+.ReactModalPortal > div {
+    opacity: 0;
+  }
+  
+  .ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 999;
+  }
+  
+  .modal-fondo {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+  }
+  .modal-fondoAnimatedElements {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+  }
+  
+  .ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  
+  .ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+  .containerConfigSelect{
+    background-color: #fff;
+    padding: 2rem;
+    width: 60vw;
+    height: 20vw;
+  }
+.ContainerButtonsDeleteAndSave{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+.ContainerInputsModalConfigSelect{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+
+.ContainerModalWINES{
+    background-color: #fff;
+    height: 50vh;
+    width: 60vw;
+    border-radius: .4rem;
+    user-select: none;
+}

@@ -56,3 +56,22 @@ $secondaryColor: #b7a3af;
 .tachado{
     text-decoration: line-through;
 }
+.CardContainerItemList__buttonEdit{
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    margin-top: .4rem;
+    margin-bottom: -1rem;
+
+    button{
+        background-color: $primaryColor !important;
+        font-size: 0.6vw;
+       
+    }
+    button:hover{
+        background-color: lighten($color: $primaryColor, $amount: 10) !important;
+    }
+}
+.disabled{
+    opacity: .3;
+}

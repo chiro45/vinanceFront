@@ -17,34 +17,64 @@ export const Home = () => {
   const user = useSelector(state => state.userReducer)
   const arrProductSelected = [
     {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-      discount: "2550"
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-      discount: "2550"
+      active: true,
+      brand:{id: 19, brand: 'Vino Toro2'},
+      category: {id: 1, category: 'Tinto'},
+      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+      discount: 4356,
+      imagesWine:[
+         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      ],
+      name: "Vino Toro",
+      price: 1500,
+      stock: 2050,
+      brand: {id: 2, brand: 'Cabernet Suavignon'},
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
     },
     {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-      discount: "2550"
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-      discount: "2550"
+      active: true,
+      brand:{id: 19, brand: 'Vino Toro2'},
+      category: {id: 1, category: 'Tinto'},
+      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+      discount: 4356,
+      imagesWine:[
+         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      ],
+      name: "Vino Toro",
+      price: 1500,
+      stock: 2050,
+      brand: {id: 2, brand: 'Cabernet Suavignon'},
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+    },
+    {
+      active: true,
+      brand:{id: 19, brand: 'Vino Toro2'},
+      category: {id: 1, category: 'Tinto'},
+      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+      discount: 4356,
+      imagesWine:[
+         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      ],
+      name: "Vino Toro",
+      price: 1500,
+      stock: 2050,
+      brand: {id: 2, brand: 'Cabernet Suavignon'},
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+    },
+    {
+      active: true,
+      brand:{id: 19, brand: 'Vino Toro2'},
+      category: {id: 1, category: 'Tinto'},
+      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+      discount: 4356,
+      imagesWine:[
+         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      ],
+      name: "Vino Toro",
+      price: 1500,
+      stock: 2050,
+      brand: {id: 2, brand: 'Cabernet Suavignon'},
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
     }
 
   ]

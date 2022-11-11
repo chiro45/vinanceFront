@@ -1,4 +1,5 @@
-
+$primaryColor: #9b205c;
+$secondaryColor: #b7a3af;
 .containerPrincipalStore{
     display: flex;
     flex-direction: column;
@@ -76,8 +77,18 @@
     }
 
 }
-.titleList{
-   
-
-    
+.CardContainerItemList__buttonStore{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    button{
+        background-color: $primaryColor !important;
+        font-size: 0.6vw;
+        margin-top: 1rem;
+        margin-bottom: -1rem;
+       
+    }
+    button:hover{
+        background-color: lighten($color: $primaryColor, $amount: 10) !important;
+    }
 }

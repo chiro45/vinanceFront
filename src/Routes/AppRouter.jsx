@@ -34,7 +34,7 @@ export const AppRouter = () => {
         <Route path="*"
           element={
             <PublicRoute>
-              <Register />
+              <Login />
             </PublicRoute>} />
         <Route path="/product"
           element={

@@ -3,14 +3,14 @@ import { Types } from "../Types/Types";
 
 
 const initialState = {
-    userName: null,
+    userName:  null,
     avatar: "",
     rol: ""
  }
  
  //handle audio status
  export const UserReducer = (state = initialState, action) =>{
-    console.log(action.payload)
+   
      switch (action.type) {
          case Types.addUser:
              return{

@@ -27,7 +27,7 @@ export const Register = () => {
 
   const onRegister = () => {
     if (password === passwordConfirm) {
-      fetch(`${process.env.REACT_APP_URL_BASE}auth/register`, {
+      fetch(`${process.env.REACT_APP_URLBASE}auth/register`, {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain",

@@ -1,9 +1,12 @@
 
+import { MDBBtn } from "mdb-react-ui-kit"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 
 import { Header } from "../../UI/Header/Header"
+import { ModalWines } from "../../UI/Modals/ModalWInes/ModalWines"
 import "./Store.scss"
 export const Store = () => {
   const arrProductSelected = [
@@ -185,19 +188,69 @@ export const Store = () => {
     }
   ]
 const user = useSelector(state => state.userReducer)
-console.log(user.rol[0], user.rol[1])
+const [userMode, setUserMode] = useState("user")
+const [openModal, setOpenModal]= useState(false)
+const handleOpenModal = ()=>{
+  setOpenModal(!openModal)
+}
+const [wines, setWines] = useState([  
+  {
+    active: true,
+    brand:{id: 19, brand: 'Vino Toro2'},
+    category: {id: 1, category: 'Tinto'},
+    description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+    imagesWine:[
+       {id: 34, image: 'https://cdn.computerhoy.com/sites/navi.axelspringe…asta-precio-desorbitado-2336969.jpg?itok=6GoSz_9H'}
+    ],
+    name: "Vino Toro",
+    price: 1500,
+    stock: 2050,
+    brand: {id: 2, brand: 'Cabernet Suavignon'},
+    varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+  }
+])
+useEffect(()=>{
+  const token =  localStorage.getItem("token")
+        
+        fetch(`${process.env.REACT_APP_URLBASE}wines`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json, text/plain",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if(data.length > 4){
+                setWines(data)
+              }
+              console.log(data)})
+            .catch((err) => console.log(err));
+          
+},[])
+useEffect(() => {
+  if(user.rol[0] === "ROLE_USER"){
+    setUserMode("seller")
+  }else if (user.rol[0] === "ROLE_USER" && user.rol[1] === "ROLE_SELLER" ){
+    setUserMode("user")
+  }
+}, [user]);
   return (
     <div>
       <Header />
-
+      <ModalWines
+        openModal={openModal}
+        handleOpenModal={handleOpenModal}
+      />
       <div className="containerPrincipalStore">
         <div className="storeContainer">
           <div className="storeContainerBar">
             <div className="divList">
               <h2 className="titleList">Varietal</h2>
               <ul>
-                <li>Vino Malbec</li>
-                <li>Vino Blanco</li>
+                <li>Malbec</li>
+                <li>Suavignon Blanc</li>
                 <li>Cabernet Suavignon</li>
                 <li>Cabernet Franc</li>
               </ul>
@@ -227,20 +280,31 @@ console.log(user.rol[0], user.rol[1])
               </ul>
             </div>
           </div>
+          <div>
+         { user=== "seller"
+         ?
+           <div className="CardContainerItemList__buttonStore">
+      
+           <MDBBtn onClick={()=>{setOpenModal(!openModal)}}>Nuevo producto</MDBBtn>
+          </div>
+           :null
+         }
           <div className="storeContainerStore">
-
+         
             {
-              arrProductSelected.map((vino, i) => (
+              wines.map((vino, i) => (
                 <div className="list">
                   <CardItemList
                     key={i}
                     vino={vino}
+                    userMode={userMode}
                   />
                 </div>
               ))
-            }
+            } 
 
 
+          </div>
           </div>
         </div>
 

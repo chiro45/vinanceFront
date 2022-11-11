@@ -1,12 +1,13 @@
-import { MDBBtn } from "mdb-react-ui-kit"
+import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addActiveProduct, removeActiveProduct } from "../../../../Actions/Product"
 import "./CardItemList.scss"
 
-export const CardItemList = ({vino, index}) => {
-    const { varietal, name, price, src, discount } =  vino
+export const CardItemList = ({vino, index, userMode}) => {
+    const user = useSelector(state => state.userReducer)
+    const { varietal, name, price, imagesWine, discount ,active} =  vino
     const navigate = useNavigate()
     const dispatch = useDispatch()
    
@@ -19,11 +20,18 @@ export const CardItemList = ({vino, index}) => {
     }
 
     return (
-        <div className="ContainerCardItemList">
+        <div className={"ContainerCardItemList" }>
+            {
+                userMode ==="seller"
+                ?<div className="CardContainerItemList__buttonEdit">
+                    <MDBBtn onClick={handleClickAddCarrito}><MDBIcon fas icon="pen" /></MDBBtn>
+                </div>
+                : null
+            }
             <div onClick={handleClickProduct}>
                 <div className="ContainerCardItemList__img">
-                    <img src={src} /></div>
-                <div className="CardContainerItemList__Varietal"><p>{varietal}</p></div>
+                    <img src={imagesWine[0].image} /></div>
+                <div className="CardContainerItemList__Varietal"><p>{varietal.varietal}</p></div>
                 <div className="CardContainerItemList__Nombre"><p>{name}</p></div>
                 {
                     discount !== undefined
@@ -33,9 +41,13 @@ export const CardItemList = ({vino, index}) => {
 
                 <div className="CardContainerItemList__precio"><p>${price}</p></div>
             </div>
-            <div className="CardContainerItemList__button">
-                <MDBBtn onClick={handleClickAddCarrito}>Añadir al carrito</MDBBtn>
+           {
+            userMode !=="seller"
+           ? <div className="CardContainerItemList__button">
+             <MDBBtn onClick={handleClickAddCarrito}>Añadir al carrito</MDBBtn>
             </div>
+            :null
+           }
         </div>
 
     )

@@ -27,8 +27,7 @@ export const Login = () => {
   const dispatch = useDispatch()
   const onLogin = () => {
 
-  
-    fetch(`${process.env.REACT_APP_URL_BASE}auth/login`, {
+    fetch(`${process.env.REACT_APP_URLBASE}auth/login`, {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain",
