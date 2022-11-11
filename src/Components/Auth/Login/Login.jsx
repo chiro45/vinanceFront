@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import { useForm } from "../../../Hooks/useForm"
 
 import {useState} from "react"
+import { useDispatch } from "react-redux"
+import { handleAddUser } from "../../../Reducers/UserReducer"
 
 export const Login = () => {
 
@@ -22,28 +24,42 @@ export const Login = () => {
   } = formValues
 
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const onLogin = () => {
+
   
-     fetch("", {
-       method: "POST",
-       headers: {
-         Accept: "application/json, text/plain, */*",
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({
-         username: user,
-         password: password,
-       })
-     })
-       .then((response) => response.json())
-       .then((data) => console.log(data))
-       .catch((err) => {
-         console.log(err);
-         Swal.fire("Intenta Nuevamente","Usuario o contraseña incorrecta","error")
-       });
-     Swal.fire("Login exitoso "," haz ingresado correctamente","success")
-     //navigate("/homeuser")
+    fetch(`${process.env.REACT_APP_URL_BASE}auth/login`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: user,
+        password: password,
+      })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+       if(data.username){
+        console.log(data)
+         dispatch(handleAddUser(data.username,data.authorities))
+         localStorage.removeItem("token")
+        setTimeout(()=>{
+         localStorage.setItem("token", data.token)
+         Swal.fire("Login exitoso "," haz ingresado correctamente","success")
+         navigate("/homeuser")
+        },50)
+       }
+      }
+      )
+      .catch((err) => {
+        console.log(err);
+        Swal.fire("Intenta Nuevamente","Usuario o contraseña incorrecta","error")
+      });
+    
+ 
+    
   }
 
   return (
@@ -62,7 +78,7 @@ export const Login = () => {
                 onChange={handleInputChange} 
                 type={"text"} 
                 autoComplete="off" 
-                spellcheck="false" 
+                spellCheck="false" 
                 className="input__login" />
             </div>
             <div className="container__itemsLogin-passwd">

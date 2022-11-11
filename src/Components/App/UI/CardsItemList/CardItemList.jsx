@@ -9,9 +9,7 @@ export const CardItemList = ({vino, index}) => {
     const { varietal, name, price, src, discount } =  vino
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(removeActiveProduct())
-    }, []);
+   
     const handleClickProduct = () => {
         navigate('/product')
         dispatch(addActiveProduct(vino))

@@ -1,5 +1,8 @@
+
+import { useSelector } from "react-redux"
+
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
-import { Footer } from "../../UI/Footer/Footer"
+
 import { Header } from "../../UI/Header/Header"
 import "./Store.scss"
 export const Store = () => {
@@ -181,6 +184,8 @@ export const Store = () => {
 
     }
   ]
+const user = useSelector(state => state.userReducer)
+console.log(user.rol[0], user.rol[1])
   return (
     <div>
       <Header />
@@ -195,6 +200,15 @@ export const Store = () => {
                 <li>Vino Blanco</li>
                 <li>Cabernet Suavignon</li>
                 <li>Cabernet Franc</li>
+              </ul>
+            </div>
+            <div className="divList">
+              <h2 className="titleList">Tipo</h2>
+              <ul>
+                <li>Rosado</li>
+                <li>Tinto</li>
+                <li>Blanco</li>
+                <li></li>
               </ul>
             </div>
             <div className="divList">

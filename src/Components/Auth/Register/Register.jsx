@@ -8,52 +8,58 @@ export const Register = () => {
 
   const navigate = useNavigate()
 
-  
+
   const [formValues, handleInputChange] = useForm({
-    user:"",
-    password:"",
-    passwordConfirm:"",
+    user: "",
+    password: "",
+    passwordConfirm: "",
     date: undefined,
-    email:"",
-    name:""
+    email: "",
+    name: ""
   })
   const {
-  user,
-  name,
-  password,
-  passwordConfirm,
-  email,
+    user,
+    name,
+    password,
+    passwordConfirm,
+    email,
   } = formValues
 
-  const onRegister = ()=>{
-      if(password === passwordConfirm){
-        fetch("", {
-          method: "POST",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-           username:user,
-           name:name,
-           email: email,
-           password:password,
-           
-          })
+  const onRegister = () => {
+    if (password === passwordConfirm) {
+      fetch(`${process.env.REACT_APP_URL_BASE}auth/register`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: user,
+          name: name,
+          email: email,
+          password: password,
+
         })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
-          .catch((err) => {
-            console.log(err);
-          });
-       
-      }else{
-        Swal.fire("Error!","Contraseñas no coinciden", "error")
-      }
- 
-  //   Swal.fire("Registrado!","se ha regsitrado con exito", "success")
-  //   navigate("/login")
-   }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "Usuario guardado") {
+            Swal.fire("Registrado!", "se ha regsitrado con exito", "success")
+            navigate("/login")
+          } else {
+            Swal.fire("Error!", "Usuario ya existente", "error")
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          Swal.fire("Error!", "Hubo un error intenta nuevamente", "error")
+        });
+    } else {
+      Swal.fire("Error!", "Contraseñas no coinciden", "error")
+    }
+
+
+  }
 
   return (
     <div className="containerPrincipal">
@@ -65,68 +71,49 @@ export const Register = () => {
             </div>
             <div>
               <label className="labelRegister">Ingrese un nombre de usuario</label>
-              <input 
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"user"} 
-              value={user}
-              type={"text"}/>
+              <input
+                className="inputRegister"
+                onChange={handleInputChange}
+                name={"user"}
+                value={user}
+                type={"text"} />
             </div>
             <div>
               <label className="labelRegister">Nombre</label>
-              <input 
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"name"} 
-              value={name}
-              type={"text"}/>
+              <input
+                className="inputRegister"
+                onChange={handleInputChange}
+                name={"name"}
+                value={name}
+                type={"text"} />
             </div>
             <div>
               <label className="labelRegister">Email</label>
-              <input 
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"email"} 
-              value={email}
-              type={"email"}/>
+              <input
+                className="inputRegister"
+                onChange={handleInputChange}
+                name={"email"}
+                value={email}
+                type={"email"} />
             </div>
             <div>
               <label className="labelRegister">Ingrese una contraseña</label>
-              <input 
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"password"} 
-              value={password}
-              type={"text"}/>
+              <input
+                className="inputRegister"
+                onChange={handleInputChange}
+                name={"password"}
+                value={password}
+                type={"text"} />
             </div>
             <div>
               <label className="labelRegister">Repita la contraseña</label>
               <input
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"passwordConfirm"} 
-              value={passwordConfirm}
-              type={"text"}/>
+                className="inputRegister"
+                onChange={handleInputChange}
+                name={"passwordConfirm"}
+                value={passwordConfirm}
+                type={"text"} />
             </div>
-            {/* <div>
-              <label className="labelRegister">Fecha de nacimiento</label>
-              <input 
-              onChange={handleInputChange}
-              name={"date"} 
-              value={date} 
-              className="inputRegister date" type={"date"}/>
-            </div> */}
-            {/* <div>
-              <label className="labelRegister">Domicilio</label>
-              <input
-              className="inputRegister"
-              onChange={handleInputChange}
-              name={"address"} 
-              value={address}
-              type={"text"}/>
-            </div> */}
-            
-
             <div className="container__itemsLogin-buttonIngresar">
               <MDBBtn onClick={onRegister}>Registrarse</MDBBtn>
             </div>
