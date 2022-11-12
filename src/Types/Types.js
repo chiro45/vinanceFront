@@ -5,5 +5,10 @@ export const Types = {
     removeActiveProduct: "[Product] removeProductActive",
 
     addUser: "[User] AddUser",
-    removeUser :"[User] RemoveUser"
+    removeUser :"[User] RemoveUser",
+
+
+    addItemToCart: "[Cart] addItem",
+    deleteItemToCart: "[Cart] deleteITem",
+    removeItemsToCart: "[Cart] removesItems"
 }
