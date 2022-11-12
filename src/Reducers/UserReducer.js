@@ -3,9 +3,9 @@ import { Types } from "../Types/Types";
 
 
 const initialState = {
-    userName:  null,
+    userName:  "admin",
     avatar: "",
-    rol: ""
+    rol: [{authority:"ROLE_SELLER"}]
  }
  
  //handle audio status

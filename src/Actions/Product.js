@@ -2,7 +2,7 @@ import { Types } from "../Types/Types"
 
 export const addActiveProduct = (item)=>({
     type: Types.addActiveProduct,
-    payload: {...item}
+    payload: item
 })
 
 export const removeActiveProduct = ()=>({

@@ -4,7 +4,9 @@ import { useState } from 'react';
 export const useForm = ( initialState = {} ) => {
     //instanciamos el useState para el cambio del imput
     const [values, setValues] = useState(initialState); //el initialstate se pasa por parametro
-   
+    const reset =  (objet={})=>{
+        setValues(objet)
+    }
     //tomamos el target en la funcion
     const handleInputChange = ({ target }) => {
      //el setValue lo que hace es retornar todos los valores
@@ -31,6 +33,6 @@ export const useForm = ( initialState = {} ) => {
     }
     }
     //retornamos los valores la funcion de change 
-    return [ values, handleInputChange ];
+    return [ values, handleInputChange, reset ];
 
 }

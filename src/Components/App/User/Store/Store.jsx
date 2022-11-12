@@ -9,207 +9,15 @@ import { Header } from "../../UI/Header/Header"
 import { ModalWines } from "../../UI/Modals/ModalWInes/ModalWines"
 import "./Store.scss"
 export const Store = () => {
-  const arrProductSelected = [
-    {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
 
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    },
-    {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    }, {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    }, {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    }, {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    }, {
-      id: 0,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Tinto",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 1,
-      src: "https://jumboargentina.vtexassets.com/arquivos/ids/624747/Vino-Chacabuco-Cabernet-Botella-550-Ml-1-37304.jpg?v=637510296794330000",
-      varietal: "Cabernet Suavignon ",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    },
-    {
-      id: 2,
-      src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/161254-1000-1000/Vino-CHACABUCO-malbec-750-cc-Vino-CHACABUCO-malbec-750-cc-1-5759.jpg?v=637287210267970000",
-      varietal: "Vino Rose",
-      name: "Vino Chacabuco Malbec",
-      price: "1506",
-
-    }, {
-      id: 3,
-      src: "https://cepadevinos.com/wp-content/uploads/2018/04/ESCORIHUELA.jpg",
-      varietal: "Vino Cabernet Frac",
-      name: "Vino Chacabuco Malbec",
-      price: "1500",
-
-    }
-  ]
 const user = useSelector(state => state.userReducer)
 const [userMode, setUserMode] = useState("user")
 const [openModal, setOpenModal]= useState(false)
 const handleOpenModal = ()=>{
   setOpenModal(!openModal)
 }
-const [wines, setWines] = useState([  
-  {
-    active: true,
-    brand:{id: 19, brand: 'Vino Toro2'},
-    category: {id: 1, category: 'Tinto'},
-    description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-    imagesWine:[
-       {id: 34, image: 'https://cdn.computerhoy.com/sites/navi.axelspringe…asta-precio-desorbitado-2336969.jpg?itok=6GoSz_9H'}
-    ],
-    name: "Vino Toro",
-    price: 1500,
-    stock: 2050,
-    brand: {id: 2, brand: 'Cabernet Suavignon'},
-    varietal: {id: 2, varietal: 'Cabernet Suavignon'}
-  }
-])
-useEffect(()=>{
+const [wines, setWines] = useState([ ])
+const getAllWInes = ()=>{
   const token =  localStorage.getItem("token")
         
         fetch(`${process.env.REACT_APP_URLBASE}wines`, {
@@ -222,17 +30,20 @@ useEffect(()=>{
           })
             .then((response) => response.json())
             .then((data) => {
-              if(data.length > 4){
+              if(data.length > 0){
                 setWines(data)
-              }
-              console.log(data)})
+                console.log(data)
+              }})
             .catch((err) => console.log(err));
           
-},[])
+}
+
+useEffect(()=>{getAllWInes()},[])
+
 useEffect(() => {
-  if(user.rol[1].authority === "ROLE_SELLER"){
+  if(user.rol[0].authority === "ROLE_SELLER"){
     setUserMode("seller")
-  }else if (user.rol[0].authority !== "ROLE_SELLER" ){
+  }else if (user.rol[0].authority === "ROLE_USER"  ){
     setUserMode("user")
   }
 }, [user]);
@@ -240,6 +51,7 @@ useEffect(() => {
     <div >
       <Header />
       <ModalWines
+        getAllWInes={getAllWInes}
         openModal={openModal}
         handleOpenModal={handleOpenModal}
       />

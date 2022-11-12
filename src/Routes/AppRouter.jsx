@@ -1,6 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter,  Route, Routes } from "react-router-dom"
+import { ViewProduct } from "../Components/App/UI/ViewProduct/ViewProduct"
 import { Home } from "../Components/App/User/Home/Home"
-import { Product } from "../Components/App/User/Product/Product"
+
 
 import { Store } from "../Components/App/User/Store/Store"
 import { Login } from "../Components/Auth/Login/Login"
@@ -39,7 +40,7 @@ export const AppRouter = () => {
         <Route path="/product"
           element={
             <PrivateRoute>
-              <Product />
+              <ViewProduct />
             </PrivateRoute>} />
         <Route path="/store"
           element={
