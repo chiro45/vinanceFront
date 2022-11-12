@@ -24,9 +24,8 @@ $secondaryColor: #b7a3af;
     background-color: #fff;
     margin-top: 2rem;
     border-radius:.45rem;
-    max-height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    max-height: 80vh;
+    overflow-y: auto    ;
     display: grid;
     grid-template-columns: repeat(4, 1.5fr);
     
@@ -92,3 +91,6 @@ $secondaryColor: #b7a3af;
         background-color: lighten($color: $primaryColor, $amount: 10) !important;
     }
 }
+.containersas{
+  max-height: 80vh;
+} 

@@ -58,8 +58,108 @@
 
 .ContainerModalWINES{
     background-color: #fff;
-    height: 50vh;
-    width: 60vw;
+    min-height: 76vh;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 50vw;
     border-radius: .4rem;
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerModalSelectCreate{
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  button{
+    width: 25%;
+  }
+}
+.ContainerModalWINES__title{
+  margin-top: 3vh;
+}
+.ContainerCreateWines{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.ContainerCreateWines__inputs{
+  display: flex;
+  
+  flex-direction: column;
+  input,textarea{
+    border: none;
+    background-color: rgb(188, 216, 253);
+    color: #000;
+    margin: .4rem;
+    border-radius: .4rem;
+    text-align: center;
+  }
+  input,textarea::placeholder{
+    color: #000;
+    text-align: center;
+  }
+  input,textarea:focus {
+    outline: none;
+    border: none;
+    
+}
+textarea{
+  height: 10vh;
+  
+  text-align: justify;
+}
+
+  
+}
+
+.slectsWines{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.containerIMgs{
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 11vh;
+  width: 46vh;
+  background-color: rgb(188, 216, 253);
+  border-radius: .4rem;
+  div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .4rem;
+    i{
+      margin-top: .4rem;
+      text-align: justify;
+      color: #ff0000;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    img{
+      width: 10vh;
+      height: 8vh;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+
+}
+
+.containerAddPicture{
+  width: 46vh;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  display: flex;
+  justify-content: flex-start;
 }

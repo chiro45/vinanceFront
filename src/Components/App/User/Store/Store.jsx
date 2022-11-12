@@ -230,14 +230,14 @@ useEffect(()=>{
           
 },[])
 useEffect(() => {
-  if(user.rol[0] === "ROLE_USER"){
+  if(user.rol[1].authority === "ROLE_SELLER"){
     setUserMode("seller")
-  }else if (user.rol[0] === "ROLE_USER" && user.rol[1] === "ROLE_SELLER" ){
+  }else if (user.rol[0].authority !== "ROLE_SELLER" ){
     setUserMode("user")
   }
 }, [user]);
   return (
-    <div>
+    <div >
       <Header />
       <ModalWines
         openModal={openModal}
@@ -280,8 +280,8 @@ useEffect(() => {
               </ul>
             </div>
           </div>
-          <div>
-         { user=== "seller"
+          <div >
+         { userMode=== "seller"
          ?
            <div className="CardContainerItemList__buttonStore">
       
