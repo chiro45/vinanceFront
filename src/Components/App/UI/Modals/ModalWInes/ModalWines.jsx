@@ -8,10 +8,13 @@ import "../Modals.scss"
 import { useForm } from "../../../../../Hooks/useForm"
 import { startUploading } from "../../../../../Helpers/fileUpload";
 import Swal from "sweetalert2";
+import { CreateWines } from "./AccesoryProductCreate/CreateWines";
+import { AccessoriesCreate } from "./WineProductCreate/AccessoriesCreate";
 
-export const ModalWines = ({ openModal, handleOpenModal }) => {
 
-  const [formValues, handleInputChange] = useForm({
+export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
+
+  const [formValues, handleInputChange, reset] = useForm({
     //wines
     name: "",
     description: "",
@@ -27,7 +30,7 @@ export const ModalWines = ({ openModal, handleOpenModal }) => {
     priceAccesories: 0,
     stockAccesories: 0,
     activeAccesories: true,
-    brandAccesories: "",
+
   })
   const {
     name,
@@ -43,8 +46,8 @@ export const ModalWines = ({ openModal, handleOpenModal }) => {
     descriptionAccesories,
     priceAccesories,
     stockAccesories,
-    activeAccesories,
-    brandAccesories,
+    activeAccesories
+
   } = formValues
   const [imagesWine, setImagesWines] = useState([])
   const [imagesAccesories, setImagesAccesories] = useState([])
@@ -52,43 +55,64 @@ export const ModalWines = ({ openModal, handleOpenModal }) => {
 
 
 
-  const create = (typeFecth) => {
+  const create = async (typeFecth) => {
     const token = localStorage.getItem("token")
-    console.log(
-      "name", name,
-      "description", description,
-      "price", price,
-      "stock", stock,
-      "active", active,
-      "brand", brand,
-      "category", category,
-      "varietal", varietal,
-    )
+    let isBrand = {} 
     if (typeFecth === "wines") {
-      fetch(`${process.env.REACT_APP_URLBASE}wines`, {
+      //fetch brand
+     await fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-          name: name,
-          description: description,
-          price: price,
-          stock: stock,
-          active: active,
-          brand: { brand: `${brand}` },
-          category: { id: `${category}` },
-          varietal: { id: `${varietal}` },
-          imagesWine: imagesWine
+          brand: brand
         })
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          console.log(data)
+          isBrand  = data
+        })
         .catch((err) => console.log(err));
+       //fetch wines
+
+       await fetch(`${process.env.REACT_APP_URLBASE}wines`, {
+         method: "POST",
+         headers: {
+           Accept: "application/json, text/plain",
+           "Content-Type": "application/json",
+           "Authorization": `Bearer ${token}`
+         },
+         body: JSON.stringify({
+           name: name,
+           description: description,
+           price: price,
+           stock: stock,
+           active: active,
+           brand: { id: `${isBrand.id}` },
+           category: { id: `${category}` },
+           varietal: { id: `${varietal}` },
+           imagesWine: imagesWine
+         })
+       })
+         .then((response) => response.json())
+         .then((data) => {
+          console.log(isBrand.id)
+           handleOpenModal()
+           getAllWInes()
+           console.log(data)
+         })
+         .catch((err) => {
+          console.log(isBrand.id)
+           Swal.fire("Error", "Intenta nuevamente", "error")
+           console.log(err)
+         });
     } else {
-      fetch(`${process.env.REACT_APP_URLBASE}accesories`, {
+      //fetch accesories
+      fetch(`${process.env.REACT_APP_URLBASE}accessories`, {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain",
@@ -96,28 +120,49 @@ export const ModalWines = ({ openModal, handleOpenModal }) => {
           "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
-          // name: name,
-          // description: description,
-          // price: price,
-          // stock: stock,
-          // active: active,
-          // brand: { brand: `${brand}` },
-          // category: { id: `${category}` },
-          // varietal: { id: `${varietal}` },
-          // imagesWine: imagesWine
+          name: nameAccesories,
+          description: descriptionAccesories,
+          price: priceAccesories,
+          stock: stockAccesories,
+          active: activeAccesories,
+          imagesAccesory: imagesAccesories,
         })
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+        .then((data) => {
+          handleOpenModal()
+          getAllWInes()
+          console.log(data)
+        })
+        .catch((err) => {
+          Swal.fire("Error", "Intenta nuevamente", "error")
+          console.log(err)
+        });
     }
 
   }
 
 
   const closeModal = () => {
-    setImagesWines([])
     handleOpenModal()
+
+    reset({
+      name: "",
+      description: "",
+      price: 0,
+      stock: 0,
+      active: true,
+      brand: "",
+      category: 0,
+      varietal: 0,
+      //accesories
+      nameAccesories: "",
+      descriptionAccesories: "",
+      priceAccesories: 0,
+      stockAccesories: 0,
+      activeAccesories: true
+    })
+    setImagesWines([])
   };
   //evento que detecta que cambie
   const handleFileChange = async (e) => {
@@ -189,141 +234,28 @@ export const ModalWines = ({ openModal, handleOpenModal }) => {
         {
           selectCreate === "wines"
             ?
-            <div className="ContainerCreateWines">
-              <div className="ContainerCreateWines__Title" >
-                <h1>Vinos</h1>
-              </div>
-              <div className="ContainerCreateWines__inputs">
-                <div>
-                  <label>Nombre</label>
-                  <input type={"text"} style={{ width: "86%" }} placeholder="Nombre del vino" value={name} name="name" onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Marca</label>
-                  <input type={"text"} style={{ width: "88%" }} placeholder="Marca" value={brand} name="brand" onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Precio</label>
-                  <input type={"number"} placeholder="Precio" value={price} name="price" onChange={handleInputChange} />
-                  <label>Stock</label>
-                  <input type={"number"} placeholder="Stock" value={stock} name="stock" onChange={handleInputChange} />
-                </div>
-                <div>
-
-                  <label>Active</label>
-                  <input type={"checkbox"} value={active} name="active" checked={active} onChange={handleInputChange} />
-
-                </div>
-                <textarea type={"text"} placeholder="Descripttion" value={description} name="description" onChange={handleInputChange} />
-              </div>
-              <div className="slectsWines">
-                <div>
-                  <label>Varietal</label>
-                  <MDBSelect
-                    data={[
-                      { text: "Malbec", value: 1 },
-                      { text: "Cabernet Suavignon", value: 2 },
-                      { text: "Suavignon Blanc", value: 3 },
-                      { text: "Cabernet Franc", value: 4 }
-
-                    ]}
-                    onValueChange={(e) => { handleSelect(e, "varietal") }}
-                  />
-                </div>
-                <div>
-                  <label>Tipo</label>
-                  <MDBSelect
-                    data={[
-                      { text: "Tinto", value: 1 },
-                      { text: "Rose", value: 2 },
-                      { text: "Blanco", value: 3 }
-                    ]}
-                    onValueChange={(e) => { handleSelect(e, "tipo") }}
-
-                  />
-                </div>
-              </div>
-              <div className="containerAddPicture">
-                <MDBBtn onClick={handlePHOTO}>Añade una foto <MDBIcon fas icon="camera" /></MDBBtn>
-              </div>
-              <input id='fileSelector'
-                type='file'
-                name='file'
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-              />
-
-              <div className="containerIMgs">
-                {
-
-                  imagesWine.map((el, i) => (
-                    <div className="containerImg">
-                      <img src={el.image} />
-
-                      <MDBIcon onClick={() => handleDeleteImg('wines', i)} fas icon="trash-alt" />
-                    </div>
-                  ))
-                }
-
-              </div>
-              <MDBBtn onClick={() => { create("wines") }}>Crear Vino <MDBIcon fas icon="plus" /></MDBBtn>
-            </div>
+            <CreateWines
+              formValues={formValues}
+              handleInputChange={handleInputChange}
+              handleSelect={handleSelect}
+              handlePHOTO={handlePHOTO}
+              imagesWine={imagesWine}
+              handleFileChange={handleFileChange}
+              handleDeleteImg={handleDeleteImg}
+              create={create}
+            />
 
             :
-            <div className="ContainerCreateWines">
-              <div className="ContainerCreateWines__Title" >
-                <h1>Accesorios</h1>
-              </div>
-              <div className="ContainerCreateWines__inputs">
-                <div>
-                  <label>Nombre</label>
-                  <input type={"text"} style={{ width: "86%" }} placeholder="Nombre del vino" value={nameAccesories} name="nameAccesories" onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Marca</label>
-                  <input type={"text"} style={{ width: "88%" }} placeholder="Marca" value={brandAccesories} name="brandAccesories" onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Precio</label>
-                  <input type={"number"} placeholder="Precio" value={priceAccesories} name="priceAccesories" onChange={handleInputChange} />
-                  <label>Stock</label>
-                  <input type={"number"} placeholder="Stock" value={stockAccesories} name="stockAccesories" onChange={handleInputChange} />
-                </div>
-                <div>
-
-                  <label>Active</label>
-                  <input type={"checkbox"} value={active} name="activeAccesories" checked={activeAccesories} onChange={handleInputChange} />
-
-                </div>
-                <textarea type={"text"} placeholder="Description" value={descriptionAccesories} name="descriptionAccesories" onChange={handleInputChange} />
-              </div>
-
-
-              <div className="containerAddPicture">
-                <MDBBtn onClick={handlePHOTO}>Añade una foto <MDBIcon fas icon="camera" /></MDBBtn>
-              </div>
-              <input id='fileSelector'
-                type='file'
-                name='file'
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-              />
-
-              <div className="containerIMgs">
-                {
-
-                  imagesAccesories.map((el, i) => (
-                    <div className="containerImg">
-                      <img src={el.image} />
-
-                      <MDBIcon onClick={() => handleDeleteImg('accesories', i)} fas icon="trash-alt" />
-                    </div>
-                  ))
-                }
-
-              </div>
-              <MDBBtn onClick={() => { create("accesories") }}>Crear Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
-            </div>
+            <AccessoriesCreate
+              formValues={formValues}
+              handleInputChange={handleInputChange}
+              handleSelect={handleSelect}
+              handlePHOTO={handlePHOTO}
+              imagesAccesories={imagesAccesories}
+              handleFileChange={handleFileChange}
+              handleDeleteImg={handleDeleteImg}
+              create={create}
+            />
 
 
         }

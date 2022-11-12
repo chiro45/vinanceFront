@@ -1,0 +1,102 @@
+$primaryColor: #9b205c;
+$secondaryColor: #b7a3af;
+.containerProductView{
+    width: 100vw;
+    height: 100vh;
+}
+.inicio__containerHeader{
+    height: 10vh;
+    background-color: $primaryColor;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   .inicioContainer{
+        display: flex;
+        margin-left: 10%;
+        height: 100%;
+        justify-content: space-around;
+        width: 90%;
+        align-items: center;
+        h2{
+            color: #fff;
+            font-size: 5vh;
+            text-align: center;
+        }
+        .HeaderContainerPricicpal__container-itemsUser{
+            margin-top: 1rem;
+        }
+    }
+}
+.logo-img{
+    height: 8vh;
+    width: 8vw;
+}
+.inicio__ContainerTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.carrouselItems{
+    background-color: #ebebeb;
+    display: flex;
+    width: 100vw;
+    min-height: 90vh;
+    max-height: 90vh;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+.Containercarrousel{
+    background-color: $secondaryColor;
+    border-radius: .4rem;
+    margin: 4vw;
+    width: 50vw;
+    padding: 4rem;
+}
+.containerPropsProduct{
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.containerPropProduct__h4{
+    margin-left: 2rem;
+}
+.containerDescription{
+    
+    
+    p{
+        font-size: 1vw;
+        margin: 2rem;
+    }
+}
+.containerCompraInput{
+    input{
+        text-align: center;
+        border: none;
+        border-radius: .4rem;
+    }
+    input:focus {
+        outline: none;
+        border: none;
+       
+    }
+}
+.img{
+    height: 50vh;
+    object-fit: cover;
+    border-radius: .4rem;
+}
+.containerCompra{
+    display: flex;
+    width: 80%;
+    justify-content: space-around !important;
+    align-items: center;
+  
+}
