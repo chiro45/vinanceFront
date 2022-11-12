@@ -13,10 +13,8 @@ const initialState = {
                  ...state,
                  cart: [...state.cart, action.payload]
              }
-        case Types.deleteItemToCart:
-
-             const aux = state.filter(el=> el !== action.payload)
-
+        case Types.deleteItemToCart:    
+             const aux = state.cart.filter(el=> el.item !== action.payload)
            return{
                ...state,
                cart: aux

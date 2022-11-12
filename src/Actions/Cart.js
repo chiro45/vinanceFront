@@ -1,12 +1,13 @@
 import { Types } from "../Types/Types";
 
 
-export const addToCart = (item)=>({
+export const addToCart = (item, cant = 1)=>({
     type: Types.addItemToCart,
-    payload: item
+    payload: {item: item, cant: cant }
 })
 export const deleteItemToCart= (item)=>({
-    type: Types.deleteItemToCart
+    type: Types.deleteItemToCart,
+    payload: item
 })
 
 export const removesToCart = ()=>({

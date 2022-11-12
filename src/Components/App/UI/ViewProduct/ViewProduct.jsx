@@ -1,7 +1,8 @@
-import { MDBBtn, MDBCarousel, MDBCarouselItem, MDBIcon } from "mdb-react-ui-kit"
+import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick/lib/slider"
+import { addToCart} from "../../../../Actions/Cart"
 import { useForm } from "../../../../Hooks/useForm"
 import { removeUser } from "../../../../Reducers/UserReducer"
 
@@ -30,8 +31,9 @@ export const ViewProduct = () => {
   const {cant} = formValues
 
   const handleAddToCart = ()=>{
-    console.log(cant)
+    dispatch(addToCart(vino.productActive, parseInt(cant)))
   }
+ 
   return (
     <div className="containerProductView">
       <div className="inicio__containerHeader">
@@ -90,7 +92,7 @@ export const ViewProduct = () => {
 
         <div className="containerPropsProduct">
           <div className="containerPropProduct__title">
-            <h1> {vino.productActive.name}</h1>
+            <h1 > {vino.productActive.name}</h1>
           </div>
           <div className="containerPropProduct__h4">
             <h4>Marca: {vino.productActive.brand.brand}</h4>

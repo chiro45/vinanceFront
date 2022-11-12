@@ -2,6 +2,7 @@ import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useState} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { addToCart } from "../../../../Actions/Cart"
 import { addActiveProduct, removeActiveProduct } from "../../../../Actions/Product"
 import { ModalModify } from "../Modals/ModalModify/ModalModify"
 import "./CardItemList.scss"
@@ -17,7 +18,7 @@ export const CardItemList = ({vino, index, userMode}) => {
         navigate('/product')
     }
     const handleClickAddCarrito = () => {
-
+        dispatch(addToCart(vino))
     }
     const [openModal,setOpenModal]= useState(false)
     const handleModify = ()=>{
