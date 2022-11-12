@@ -8,6 +8,7 @@
     box-shadow: 5px 4px 10px 5px rgba($color: #000000, $alpha: .3);
     border-radius:.4rem ;
     transition: .3s ease transform;
+    min-height: 38vh;
 }
 .ContainerCardItemList:hover{
     cursor: pointer;
@@ -31,11 +32,18 @@ $secondaryColor: #b7a3af;
  text-align: center;
  font-size: .9vw;
  color: $primaryColor;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
 }
 .CardContainerItemList__Nombre{
  text-align: center;
- font-size: .9vw;
  margin: -.7rem;
+ p{
+    text-align: center;
+    width: 98%;
+    font-size: .7vw;
+ }
 }
 .CardContainerItemList__precio{
  text-align: center;
@@ -61,7 +69,7 @@ $secondaryColor: #b7a3af;
     width: 90%;
     justify-content: flex-end;
     margin-top: .4rem;
-    margin-bottom: -1rem;
+ 
 
     button{
         background-color: $primaryColor !important;
