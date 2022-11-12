@@ -6,6 +6,9 @@ import { VinanceApp } from './VinanceApp';
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "./Styles/Global.scss"
 const root = ReactDOM.createRoot(document.getElementById('root'));
+window.addEventListener('DOMContentLoaded', (event) => {
+   //Your JS code.
+   });
 root.render(
 
    <VinanceApp/>

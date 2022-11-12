@@ -4,6 +4,7 @@ import { Home } from "../Components/App/User/Home/Home"
 
 
 import { Store } from "../Components/App/User/Store/Store"
+import { StoreAccesories } from "../Components/App/User/Store/StoreAccesories"
 import { Login } from "../Components/Auth/Login/Login"
 import { Register } from "../Components/Auth/Register/Register"
 
@@ -46,6 +47,12 @@ export const AppRouter = () => {
           element={
             <PrivateRoute>
               <Store />
+            </PrivateRoute>}
+        />
+        <Route path="/storeaccesories"
+          element={
+            <PrivateRoute>
+              <StoreAccesories />
             </PrivateRoute>}
         />
       </Routes>

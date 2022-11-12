@@ -16,23 +16,23 @@ import { useSelector } from "react-redux";
 
 
 
-export const ModalModify = ({ openModal, handleOpenModal,vino }) => {
+export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
 
   const [formValues, handleInputChange, reset] = useForm({
     //wines
-    name: vino !== null ? vino.name: "",
-    description:vino !== null ? vino.description: "",
-    price: vino !== null ? vino.price: 0,
-    stock: vino !== null ? vino.stock: 0,
-    active:vino !== null ? vino.active: true,
-    brand:vino !== null ? vino.brand.brand: "",
-    category:vino !== null ? vino.category.category: "",
-    varietal:vino !== null ? vino.varietal.varietal: "",
+    name: vino !== null && type ==="wines" ? vino.name: "",
+    description:vino !== null && type ==="wines" ? vino.description: "",
+    price: vino !== null  && type ==="wines"? vino.price: 0,
+    stock: vino !== null && type ==="wines" ? vino.stock: 0,
+    active:vino !== null && type ==="wines" ? vino.active: true,
+    brand:vino !== null && type ==="wines" ? vino.brand.brand: "",
+    category:vino !== null && type ==="wines" ? vino.category.category: "",
+    varietal:vino !== null && type ==="wines" ? vino.varietal.varietal: "",
     //accesories
-    nameAccesories: "",
-    descriptionAccesories: "",
-    priceAccesories: 0,
-    stockAccesories: 0,
+    nameAccesories: vino !== null && type ==="accessories" ? vino.name: "",
+    descriptionAccesories: vino !== null && type ==="accessories" ? vino.description: "",
+    priceAccesories: vino !== null && type ==="accessories" ? vino.price: 0,
+    stockAccesories: vino !== null && type ==="accessories" ? vino.stock: 0,
     activeAccesories: true,
 
   })
@@ -54,7 +54,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino }) => {
 
   } = formValues
   const [imagesWine, setImagesWines] = useState(vino ? vino.imagesWine : [])
-  const [imagesAccesories, setImagesAccesories] = useState([])
+  const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.imagesAccesory : [])
 
 
 
@@ -176,7 +176,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino }) => {
     }
 
   }
-  const [selectCreate, setSelectCreate] = useState("wines")
+  const [selectCreate, setSelectCreate] = useState(type )
 
 
   const handleSelect = (e, type) => {

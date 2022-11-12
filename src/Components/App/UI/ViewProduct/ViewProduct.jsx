@@ -80,12 +80,26 @@ export const ViewProduct = () => {
       <div className="carrouselItems">
         <div className="Containercarrousel">
           <Slider {...settings}>
-            {
+            { 
+            vino.productActive.imagesWine
+            ?
               vino.productActive.imagesWine.map((el, i) => (
                 <img className="img" src={el.image} />
 
               ))
+            :null
             }
+            { 
+            vino.productActive.imagesAccesory
+
+            ?
+              vino.productActive.imagesAccesory.map((el, i) => (
+                <img className="img" src={el.image} />
+
+              ))
+            :null
+            }
+
           </Slider>
         </div>
 
@@ -94,15 +108,26 @@ export const ViewProduct = () => {
           <div className="containerPropProduct__title">
             <h1 > {vino.productActive.name}</h1>
           </div>
+          {
+            vino.productActive.brand 
+            ?
+            
           <div className="containerPropProduct__h4">
-            <h4>Marca: {vino.productActive.brand.brand}</h4>
-          </div>
-          <div className="containerPropProduct__h4">
-            <h4>Categoria: {vino.productActive.category.category}</h4>
-          </div>
-          <div className="containerPropProduct__h4">
-            <h4>Varietal: {vino.productActive.varietal.varietal}</h4>
-          </div>
+          <h4>Categoria: {vino.productActive.category.category}</h4>
+        </div>
+        
+            : null
+            
+          }
+            {
+              vino.productActive.brand 
+              ?
+              <div className="containerPropProduct__h4">
+          <h4>Varietal: {vino.productActive.varietal.varietal}</h4>
+        </div>
+        : null
+            }
+
           <div className="containerPropProduct__h4">
             <h4>Precio: ${vino.productActive.price}</h4>
           </div>

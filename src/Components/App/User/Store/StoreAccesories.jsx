@@ -8,7 +8,7 @@ import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 import { Header } from "../../UI/Header/Header"
 import { ModalWines } from "../../UI/Modals/ModalWInes/ModalWines"
 import "./Store.scss"
-export const Store = () => {
+export const StoreAccesories = () => {
 
 const user = useSelector(state => state.userReducer)
 const [userMode, setUserMode] = useState("user")
@@ -20,7 +20,7 @@ const [wines, setWines] = useState([ ])
 const getAllWInes = ()=>{
   const token =  localStorage.getItem("token")
         
-        fetch(`${process.env.REACT_APP_URLBASE}wines`, {
+        fetch(`${process.env.REACT_APP_URLBASE}accessories`, {
             method: "GET",
             headers: {
                 Accept: "application/json, text/plain",
@@ -107,7 +107,7 @@ useEffect(() => {
               wines.map((vino, i) => (
                 <div key={i} className="list">
                   <CardItemList
-                    type={"wines"}
+                    type={"accesories"}
                     vino={vino}
                     userMode={userMode}
                   />

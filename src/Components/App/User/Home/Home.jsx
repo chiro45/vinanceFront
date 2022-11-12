@@ -137,6 +137,7 @@ export const Home = () => {
           arrProductSelected.map((vino, i) => (
             <CardItemList
               key={i}
+              type={"wines"}
               vino={vino}
             />
           ))
@@ -150,7 +151,7 @@ export const Home = () => {
       <div className="Container__accesories">
         {
           [
-            { path: "/accesorios", text: "Accesorios", src: "https://www.dulcehogar.mx/wp-content/uploads/2020/04/Accesorios-para-vino-0.jpg" },
+            { path: "/storeaccesories", text: "Accesorios", src: "https://www.dulcehogar.mx/wp-content/uploads/2020/04/Accesorios-para-vino-0.jpg" },
             { path: "/vinos", text: "Vinos Premium", src: vinos },
             { path: "/turismo", text: "Turismo", src: turismo }
           ].map(({ text, src, path }) => (
