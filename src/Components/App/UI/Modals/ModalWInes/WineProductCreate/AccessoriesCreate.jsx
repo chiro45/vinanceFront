@@ -45,7 +45,7 @@ export const AccessoriesCreate = ({
                   <input type={"checkbox"} value={activeAccesories} name="activeAccesories" checked={activeAccesories} onChange={handleInputChange} />
 
                 </div>
-                <textarea type={"text"} placeholder="Description" value={descriptionAccesories} name="descriptionAccesories" onChange={handleInputChange} />
+                <textarea className="textAreaDescription"  type={"text"} placeholder="Description" value={descriptionAccesories} name="descriptionAccesories" onChange={handleInputChange} />
               </div>
 
 

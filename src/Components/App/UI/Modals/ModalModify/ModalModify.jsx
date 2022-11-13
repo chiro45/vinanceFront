@@ -218,16 +218,9 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     >
       <div className="ContainerModalWINES">
         <div className="ContainerModalWINES__title">
-          <h1>Crear un nuevo Producto</h1>
+          <h1>Modificar un roducto</h1>
         </div>
-        <div className="containerModalSelectCreate">
-          <MDBBtn onClick={() => {
-            setSelectCreate("wines")
-          }}>Vino</MDBBtn>
-          <MDBBtn onClick={() => {
-            setSelectCreate("accesories")
-          }}>Accesorio</MDBBtn>
-        </div>
+       
         {
           selectCreate === "wines"
             ?

@@ -2,11 +2,13 @@
 import { MDBBtn } from "mdb-react-ui-kit"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 
 import { Header } from "../../UI/Header/Header"
 import { ModalWines } from "../../UI/Modals/ModalWInes/ModalWines"
+import { NavBarStore } from "./NavBarStore/NavBarStore"
 import "./Store.scss"
 export const Store = () => {
 
@@ -57,42 +59,8 @@ useEffect(() => {
       />
       <div className="containerPrincipalStore">
         <div className="storeContainer">
-          <div className="storeContainerBar">
-            <div className="divList">
-              <h2 className="titleList">Varietal</h2>
-              <ul>
-                <li>Malbec</li>
-                <li>Suavignon Blanc</li>
-                <li>Cabernet Suavignon</li>
-                <li>Cabernet Franc</li>
-              </ul>
-            </div>
-            <div className="divList">
-              <h2 className="titleList">Tipo</h2>
-              <ul>
-                <li>Rosado</li>
-                <li>Tinto</li>
-                <li>Blanco</li>
-                <li></li>
-              </ul>
-            </div>
-            <div className="divList">
-              <h2 className="titleList">Marcas</h2>
-              <ul>
-                <li>Los Haroldos</li>
-                <li>Zuccardi</li>
-                <li>Durigutti</li>
-              </ul>
-            </div>
-            <div className="divList">
-              <h2 className="titleList">Precio</h2>
-              <ul>
-                <li>Mayor precio</li>
-                <li>Menor Precio</li>
-              </ul>
-            </div>
-          </div>
-          <div >
+          <NavBarStore/>
+        <div >
          { userMode=== "seller"
          ?
            <div className="CardContainerItemList__buttonStore">

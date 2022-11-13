@@ -43,10 +43,11 @@ $secondaryColor: #b7a3af;
 .list{
     background-color: #fff;
     border-radius: .4rem;
-   margin: 2rem;
+    margin: 2rem;
 
 }
 .storeContainerBar{
+    margin-top: 3vh;
     background-color: #ebebeb;
     width: 100%;
     display: flex;
@@ -54,17 +55,20 @@ $secondaryColor: #b7a3af;
   
 }
 .divList{
-    margin-top: 2rem;
+    margin-top: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     h2{
-        margin-left: 10%;
+        font-size: 2vw;
+        margin-left: 0vw;
     }
     ul{
         list-style: none;
         text-align: justify;
+        margin-left: -1vw;
         li{
+            font-size: 1vw;
             cursor: pointer;
             text-align: justify;
             text-decoration: none;

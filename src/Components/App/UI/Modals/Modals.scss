@@ -163,3 +163,7 @@ textarea{
   display: flex;
   justify-content: flex-start;
 }
+.textAreaDescription{
+  resize: none !important;
+  padding: .5rem 1rem !important;
+}

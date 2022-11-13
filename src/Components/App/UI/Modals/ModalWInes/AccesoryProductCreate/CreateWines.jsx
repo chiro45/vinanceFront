@@ -50,7 +50,7 @@ export const CreateWines= ({
                   <input type={"checkbox"} value={active} name="active" checked={active} onChange={handleInputChange} />
 
                 </div>
-                <textarea type={"text"} placeholder="Descripttion" value={description} name="description" onChange={handleInputChange} />
+                <textarea className="textAreaDescription"  type={"text"} placeholder="Descripttion" value={description} name="description" onChange={handleInputChange} />
               </div>
               <div className="slectsWines">
                 <div>

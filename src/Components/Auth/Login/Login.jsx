@@ -100,6 +100,9 @@ export const Login = () => {
             <div className="container__itemsLogin-linKregister">
               <a onClick={()=>{navigate("/register")}}>Registrarse <MDBIcon fas icon="user-plus" /></a>
             </div>
+            <div className="container__itemsLogin-linKregister">
+              <a onClick={()=>{navigate("/homeuser")}}> <MDBIcon fas icon="arrow-left" /> Volver a Inicio </a>
+            </div>
 
             <div className="container__itemsLogin-buttonIngresar">
               <MDBBtn onClick={onLogin}>Ingresar</MDBBtn>

@@ -1,5 +1,5 @@
 
-import { MDBBtn } from "mdb-react-ui-kit"
+import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import { useForm } from "../../../Hooks/useForm"
@@ -114,8 +114,12 @@ export const Register = () => {
                 value={passwordConfirm}
                 type={"text"} />
             </div>
+           
             <div className="container__itemsLogin-buttonIngresar">
               <MDBBtn onClick={onRegister}>Registrarse</MDBBtn>
+            </div>
+            <div className="container__itemsLogin-linKregister mt-1">
+              <a onClick={()=>{navigate("/login")}}> <MDBIcon fas icon="arrow-left" /> Volver a Login </a>
             </div>
           </div>
           <div style={{ backgroundImage: `url(https://www.zdwines.com/system/uploads/fae/image/asset/309/zd_wines_vertical_offering_napa_valley_cabernet_sauvignon.jpg)` }} className="divImgLogin"></div>

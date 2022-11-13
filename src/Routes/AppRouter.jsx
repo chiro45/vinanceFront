@@ -33,11 +33,10 @@ export const AppRouter = () => {
           element={
               <Home />
             } />
-        <Route path="*"
+            <Route path="/*"
           element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>} />
+              <Home />
+            } />
         <Route path="/product"
           element={
             <PrivateRoute>
