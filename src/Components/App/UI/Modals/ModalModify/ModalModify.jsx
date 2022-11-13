@@ -1,7 +1,5 @@
 
-
-import { MDBBtn } from "mdb-react-ui-kit";
-import {  useEffect, useState } from "react"
+import { useState } from "react"
 
 import Modal from "react-modal/lib/components/Modal";
 import { useForm } from "../../../../../Hooks/useForm"
@@ -10,9 +8,8 @@ import Swal from "sweetalert2";
 
 
 import "../ModalWInes/../Modals.scss"
-import { AccessoriesCreateModify } from "./ModifyAccesories/AccessoriesCreateModify ";
+import { AccessoriesCreateModify } from "./ModifyAccesories/AccessoriesCreateModify";
 import { CreateWinesModify } from "./ModifyWines/CreateWinesModify";
-import { useSelector } from "react-redux";
 
 
 
@@ -55,12 +52,10 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
   } = formValues
   const [imagesWine, setImagesWines] = useState(vino ? vino.imagesWine : [])
   const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.imagesAccesory : [])
-
-
-
-
-  const create =  (typeFecth ) => {
-    console.log(typeFecth)
+  const deleteElement = (typeDelete)=>{
+    console.log(typeDelete)
+  }
+  const modify =  (typeFecth) => {
     const token = localStorage.getItem("token")
     if (typeFecth === "wines") {
       //fetch brand
@@ -101,7 +96,14 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
       })
         .then((response) => {})
         .then((data) => {
-          //handleOpenModal()
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto modificado correctamente!',
+            showConfirmButton: false,
+            timer: 800
+          })
+          handleOpenModal()
           console.log(data)
         })
         .catch((err) => {
@@ -128,6 +130,13 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
       })
         .then((response) => response.json())
         .then((data) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto Modificado correctamente!',
+            showConfirmButton: false,
+            timer: 800
+          })
           handleOpenModal()
           console.log(data)
         })
@@ -167,7 +176,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     const file = e.target.files[0];
     //si el file existe emtonces se produce el disparo de actualizacion
     if (file) {
-      if (selectCreate === "wines") {
+      if (type === "wines") {
         startUploading(file, setImagesWines, imagesWine)
       } else {
         startUploading(file, setImagesAccesories, imagesAccesories)
@@ -176,7 +185,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     }
 
   }
-  const [selectCreate, setSelectCreate] = useState(type )
+
 
 
   const handleSelect = (e, type) => {
@@ -222,7 +231,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
         </div>
        
         {
-          selectCreate === "wines"
+          type === "wines"
             ?
             <CreateWinesModify
               formValues={formValues}
@@ -232,7 +241,8 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
               imagesWine={imagesWine}
               handleFileChange={handleFileChange}
               handleDeleteImg={handleDeleteImg}
-              create={create}
+              modify={modify}
+              deleteElement={deleteElement}
             />
 
             :
@@ -244,7 +254,8 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
               imagesAccesories={imagesAccesories}
               handleFileChange={handleFileChange}
               handleDeleteImg={handleDeleteImg}
-              create={create}
+              modify={modify}
+              deleteElement={deleteElement}
             />
 
 

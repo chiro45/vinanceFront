@@ -46,7 +46,13 @@ export const Login = () => {
          localStorage.removeItem("token")
         setTimeout(()=>{
          localStorage.setItem("token", data.token)
-         Swal.fire("Login exitoso "," haz ingresado correctamente","success")
+         Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Haz Iniciado sesión correctamente!',
+          showConfirmButton: false,
+          timer: 800
+        })
          navigate("/homeuser")
         },50)
        }
@@ -97,10 +103,10 @@ export const Login = () => {
               value={showPass} 
               type={"checkbox"} />
             </div>
-            <div className="container__itemsLogin-linKregister">
+            <div className="container__itemsLogin-linKregister ">
               <a onClick={()=>{navigate("/register")}}>Registrarse <MDBIcon fas icon="user-plus" /></a>
             </div>
-            <div className="container__itemsLogin-linKregister">
+            <div className="container__itemsLogin-linKregister ">
               <a onClick={()=>{navigate("/homeuser")}}> <MDBIcon fas icon="arrow-left" /> Volver a Inicio </a>
             </div>
 

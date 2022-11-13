@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 import { Carrousel } from "../../UI/Carrousel/CarrouselHome/Carrousel"
 import { Footer } from "../../UI/Footer/Footer"
-
-
-
 import turismo from "../../../../Assets/imgs/turismo.jpeg"
 import vinos from "../../../../Assets/imgs/vinos.jpg"
 import "./Home.scss"

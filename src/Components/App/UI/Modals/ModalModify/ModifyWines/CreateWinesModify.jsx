@@ -1,6 +1,4 @@
 
-
-
 import { MDBBtn, MDBIcon, MDBSelect } from "mdb-react-ui-kit";
 
 import "../../Modals.scss"
@@ -14,7 +12,8 @@ export const CreateWinesModify= ({
     handleSelect,
     handleFileChange,
     handleDeleteImg,
-    create 
+    modify,
+    deleteElement 
     }) => {
 
     
@@ -105,8 +104,8 @@ export const CreateWinesModify= ({
 
               </div>
               <div className="containerButtonsOpt">
-              <MDBBtn onClick={() => { create("wines") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
-              <MDBBtn onClick={() => { create("wines") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal" onClick={() => { modify("wines") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal" onClick={() => { deleteElement("wines") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
               </div>
             </div>
   )

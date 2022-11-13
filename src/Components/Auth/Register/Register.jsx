@@ -44,7 +44,13 @@ export const Register = () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.message === "Usuario guardado") {
-            Swal.fire("Registrado!", "se ha regsitrado con exito", "success")
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'se ha regsitrado con exito!',
+              showConfirmButton: false,
+              timer: 1000
+            })
             navigate("/login")
           } else {
             Swal.fire("Error!", "Usuario ya existente", "error")

@@ -51,10 +51,6 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
   } = formValues
   const [imagesWine, setImagesWines] = useState([])
   const [imagesAccesories, setImagesAccesories] = useState([])
-
-
-
-
   const create = async (typeFecth) => {
     const token = localStorage.getItem("token")
     let isBrand = {} 
@@ -73,10 +69,10 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
+          console.warn(data)
           isBrand  = data
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.warn(err));
        //fetch wines
 
        await fetch(`${process.env.REACT_APP_URLBASE}wines`, {
@@ -100,15 +96,20 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
        })
          .then((response) => response.json())
          .then((data) => {
-          console.log(isBrand.id)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto creado correctamente!',
+            showConfirmButton: false,
+            timer: 800
+          })
+          console.warn(data)
            handleOpenModal()
            getAllWInes()
-           console.log(data)
          })
          .catch((err) => {
-          console.log(isBrand.id)
            Swal.fire("Error", "Intenta nuevamente", "error")
-           console.log(err)
+          console.warn(err)
          });
     } else {
       //fetch accesories
@@ -132,11 +133,18 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
         .then((data) => {
           handleOpenModal()
           getAllWInes()
-          console.log(data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto creado correctamente!',
+            showConfirmButton: false,
+            timer: 800
+          })
+          console.warn(data)
         })
         .catch((err) => {
           Swal.fire("Error", "Intenta nuevamente", "error")
-          console.log(err)
+          console.warn(err)
         });
     }
 

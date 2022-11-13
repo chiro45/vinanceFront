@@ -2,6 +2,7 @@ import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 import { addToCart } from "../../../../Actions/Cart"
 import { addActiveProduct, removeActiveProduct } from "../../../../Actions/Product"
 import { ModalModify } from "../Modals/ModalModify/ModalModify"
@@ -14,12 +15,28 @@ export const CardItemList = ({ vino, index, userMode, type }) => {
     const dispatch = useDispatch()
 
     const handleClickProduct = () => {
-        dispatch(addActiveProduct(vino))
-        navigate('/product')
-    }
+      
+            dispatch(addActiveProduct(vino))
+            navigate('/product')
+        }
+    
+       
     const handleClickAddCarrito = () => {
+        if(user.userName !== null){
         dispatch(addToCart(vino))
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto Añadido al carrito!',
+            showConfirmButton: false,
+            timer: 800
+          })
+
+    }else{
+        Swal.fire("Error","Debes Iniciar Sesión!", "error")
+         
     }
+}
     const [openModal, setOpenModal] = useState(false)
     const handleModify = () => {
         dispatch(removeActiveProduct())

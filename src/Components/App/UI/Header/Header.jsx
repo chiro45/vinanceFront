@@ -34,9 +34,9 @@ export const Header = () => {
             <ul>
               {
               [
-                {text: "Mis Compras",icon:"clipboard-check", path:"/store"},
-                {text: "Carrito",icon:"shopping-cart", path:"/store"},
-                {text: "Cerrar Sesion",icon:"sign-in-alt", path:"/homeuser"},
+                {text: "Mis Compras ",icon:"clipboard-check", path:"/store"},
+                {text: "Carrito ",icon:"shopping-cart", path:"/store"},
+                {text: "Cerrar Sesion ",icon:"sign-in-alt", path:"/homeuser"},
               
               ].map(({text, icon, path},i)=>(
                 <li key={i} onClick={()=>{
@@ -46,9 +46,7 @@ export const Header = () => {
                     navigate(path)
                   }else{
                     navigate(path)
-                  } }} >{text} 
-
-                <MDBIcon fas icon={`${icon}`} /></li>
+                  } }} >{text} <MDBIcon fas icon={`${icon}`} /></li>
               ))
 
               }

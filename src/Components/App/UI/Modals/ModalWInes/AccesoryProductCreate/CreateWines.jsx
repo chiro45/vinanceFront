@@ -102,7 +102,7 @@ export const CreateWines= ({
                 }
 
               </div>
-              <MDBBtn onClick={() => { create("wines") }}>Crear Vino <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal"  onClick={() => { create("wines") }}>Crear Vino <MDBIcon fas icon="plus" /></MDBBtn>
             </div>
   )
 }

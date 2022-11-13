@@ -72,7 +72,7 @@ export const AccessoriesCreate = ({
                 }
 
               </div>
-              <MDBBtn onClick={() => { create("accesories") }}>Crear Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal"  onClick={() => { create("accesories") }}>Crear Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
             </div>
   )
 }

@@ -55,18 +55,18 @@ $secondaryColor: #b7a3af;
   
 }
 .divList{
-    margin-top: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     h2{
         font-size: 2vw;
-        margin-left: 0vw;
+        margin-left: -1vw;
     }
     ul{
         list-style: none;
         text-align: justify;
-        margin-left: -1vw;
+        margin-left: -1.6vw;
+        margin-top: -.4vh;
         li{
             font-size: 1vw;
             cursor: pointer;

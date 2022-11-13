@@ -42,7 +42,7 @@ const navigate = useNavigate()
             <div className="divList">
               <h2 className="titleList">Accesorios</h2>
               <ul>
-                <li onClick={()=> navigate("/storeaccessories")}>Nuevos Productos</li>
+                <li onClick={()=> navigate("/storeaccesories")}>Nuevos Productos</li>
               </ul>
             </div>
           </div>

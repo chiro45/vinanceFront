@@ -1,8 +1,10 @@
 .containerButtonsOpt{
     display: flex;
     justify-content: space-between;
-    width: 46vh;
+    width: 100%
+     
 }
+
 .textAreaDescription{
     resize: none !important;
     padding: .5rem 1rem !important;
