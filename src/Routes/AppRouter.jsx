@@ -1,5 +1,6 @@
 import { BrowserRouter,  Route, Routes } from "react-router-dom"
 import { ViewProduct } from "../Components/App/UI/ViewProduct/ViewProduct"
+import { Cart } from "../Components/App/User/Cart/Cart"
 import { Home } from "../Components/App/User/Home/Home"
 
 
@@ -37,6 +38,11 @@ export const AppRouter = () => {
           element={
               <Home />
             } />
+            <Route path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart/>
+            </PrivateRoute>} />
         <Route path="/product"
           element={
             <PrivateRoute>

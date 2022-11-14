@@ -6,12 +6,11 @@ import { Footer } from "../../UI/Footer/Footer"
 import turismo from "../../../../Assets/imgs/turismo.jpeg"
 import vinos from "../../../../Assets/imgs/vinos.jpg"
 import "./Home.scss"
-import { MDBIcon } from "mdb-react-ui-kit"
-import { useDispatch, useSelector } from "react-redux"
-import { removeUser } from "../../../../Reducers/UserReducer"
+import { HeaderHome } from "../../UI/HeaderHome/HeaderHome"
+
 
 export const Home = () => {
-  const user = useSelector(state => state.userReducer)
+
   const arrProductSelected = [
     {
       active: true,
@@ -76,51 +75,12 @@ export const Home = () => {
 
   ]
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+
 
 
   return (
     <div className="ContainerHome">
-      <div className="inicio__containerHeader">
-        <div className="inicioContainer">
-          <div className="inicio__ContainerTitle">
-            <h2>Vinance</h2>
-            <div>
-              <img src="https://d2r9epyceweg5n.cloudfront.net/stores/097/048/themes/common/logo-1852450306-1480016030-12b8c3de573751b06e7fa6bd160efeda1512201795-480-0.png?0" alt="Wines Argentina Express" class="logo-img" />
-            </div>
-          </div>
-          <div className="HeaderContainerPricicpal__container-itemsUser">
-            <ul>
-              {
-               (user.userName !== null)
-                ?[
-                  {text: "Store",icon:"shopping-cart", path:"/store"},
-                  {text: "Mis Compras ",icon:"clipboard-check", path:"/store"},
-                  {text: "Cerrar Sesion",icon:"sign-in-alt", path:"/login"},
-                ].map(({ text, icon, path }, i) => (
-                  <li key={i} onClick={()=>{
-                    if(text==="Cerrar Sesion"){
-                      dispatch(removeUser())
-                      localStorage.removeItem("token")
-                      navigate(path)
-                    }else{
-                      navigate(path)
-                    } }} >{text}  <MDBIcon fas icon={`${icon}`} /></li>
-                ))
-                : [
-                  { text: "Tienda", icon: "shopping-cart", path: "/store" },
-                  { text: "Ingresar", icon: "sign-in-alt", path: "/login" },
-                  { text: "Registrarse", icon: "clipboard-check", path: "/register" },
-
-                ].map(({ text, icon, path }, i) => (
-                  <li key={i} onClick={() => navigate(path)}>{text}  <MDBIcon fas icon={`${icon}`} /></li>
-                ))
-                
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
+      <HeaderHome/>
       <Carrousel />
       <div className="Home__containerprodDestacados">
         <b></b>

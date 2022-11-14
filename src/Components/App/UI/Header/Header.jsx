@@ -35,7 +35,7 @@ export const Header = () => {
               {
               [
                 {text: "Mis Compras ",icon:"clipboard-check", path:"/store"},
-                {text: "Carrito ",icon:"shopping-cart", path:"/store"},
+                {text: "Carrito ",icon:"shopping-cart", path:"/cart"},
                 {text: "Cerrar Sesion ",icon:"sign-in-alt", path:"/homeuser"},
               
               ].map(({text, icon, path},i)=>(
