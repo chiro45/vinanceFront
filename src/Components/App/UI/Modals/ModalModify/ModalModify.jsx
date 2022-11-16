@@ -91,7 +91,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
           brand: { id: `${idBrand.id}` },
           category: { id: `${category}` },
           varietal: { id: `${varietal}` },
-          imagesWine: imagesWine
+          images: imagesWine
         })
       })
         .then((response) => {})
@@ -125,7 +125,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
           price: priceAccesories,
           stock: stockAccesories,
           active: activeAccesories,
-          imagesAccesory: imagesAccesories,
+          images: imagesAccesories,
         })
       })
         .then((response) => response.json())

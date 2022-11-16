@@ -33,7 +33,7 @@ export const ViewProduct = () => {
   const handleAddToCart = ()=>{
     dispatch(addToCart(vino.productActive, parseInt(cant)))
   }
- 
+  
   return (
     <div className="containerProductView">
       <div className="inicio__containerHeader">
@@ -76,25 +76,16 @@ export const ViewProduct = () => {
             </ul>
           </div>
         </div>
+        
       </div>
       <div className="carrouselItems">
         <div className="Containercarrousel">
           <Slider {...settings}>
             { 
-            vino.productActive.imagesWine
+            vino.productActive.images
             ?
-              vino.productActive.imagesWine.map((el, i) => (
-                <img className="img" src={el.image} />
-
-              ))
-            :null
-            }
-            { 
-            vino.productActive.imagesAccesory
-
-            ?
-              vino.productActive.imagesAccesory.map((el, i) => (
-                <img className="img" src={el.image} />
+              vino.productActive.images.map((el, i) => (
+                <img key={i} className="img" src={el.image} />
 
               ))
             :null

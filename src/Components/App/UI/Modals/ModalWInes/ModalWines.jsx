@@ -91,7 +91,7 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
            brand: { id: `${isBrand.id}` },
            category: { id: `${category}` },
            varietal: { id: `${varietal}` },
-           imagesWine: imagesWine
+           images: imagesWine
          })
        })
          .then((response) => response.json())
@@ -126,7 +126,7 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
           price: priceAccesories,
           stock: stockAccesories,
           active: activeAccesories,
-          imagesAccesory: imagesAccesories,
+          images: imagesAccesories,
         })
       })
         .then((response) => response.json())
