@@ -17,19 +17,19 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
 
   const [formValues, handleInputChange, reset] = useForm({
     //wines
-    name: vino !== null && type ==="wines" ? vino.name: "",
-    description:vino !== null && type ==="wines" ? vino.description: "",
-    price: vino !== null  && type ==="wines"? vino.price: 0,
-    stock: vino !== null && type ==="wines" ? vino.stock: 0,
-    active:vino !== null && type ==="wines" ? vino.active: true,
-    brand:vino !== null && type ==="wines" ? vino.brand.brand: "",
-    category:vino !== null && type ==="wines" ? vino.category.category: "",
-    varietal:vino !== null && type ==="wines" ? vino.varietal.varietal: "",
+    name: vino !== null && type ==="Wines" ? vino.name: "",
+    description:vino !== null && type ==="Wines" ? vino.description: "",
+    price: vino !== null  && type ==="Wines"? vino.price: 0,
+    stock: vino !== null && type ==="Wines" ? vino.stock: 0,
+    active:vino !== null && type ==="Wines" ? vino.active: true,
+    brand:vino !== null && type ==="Wines" ? vino.brand.brand: "",
+    category:vino !== null && type ==="Wines" ? vino.category.category: "",
+    varietal:vino !== null && type ==="Wines" ? vino.varietal.varietal: "",
     //accesories
-    nameAccesories: vino !== null && type ==="accessories" ? vino.name: "",
-    descriptionAccesories: vino !== null && type ==="accessories" ? vino.description: "",
-    priceAccesories: vino !== null && type ==="accessories" ? vino.price: 0,
-    stockAccesories: vino !== null && type ==="accessories" ? vino.stock: 0,
+    nameAccesories: vino !== null && type ==="Accessories" ? vino.name: "",
+    descriptionAccesories: vino !== null && type ==="Accessories" ? vino.description: "",
+    priceAccesories: vino !== null && type ==="Accessories" ? vino.price: 0,
+    stockAccesories: vino !== null && type ==="Accessories" ? vino.stock: 0,
     activeAccesories: true,
 
   })
@@ -50,14 +50,25 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     activeAccesories,
 
   } = formValues
-  const [imagesWine, setImagesWines] = useState(vino ? vino.imagesWine : [])
-  const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.imagesAccesory : [])
+  const [imagesWine, setImagesWines] = useState(vino ? vino.images : [])
+  const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.images : [])
   const deleteElement = (typeDelete)=>{
-    console.log(typeDelete)
+    const token = localStorage.getItem("token")
+    fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }
   const modify =  (typeFecth) => {
     const token = localStorage.getItem("token")
-    if (typeFecth === "wines") {
+    if (typeFecth === "Wines") {
       //fetch brand
       const idBrand = {}
       fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
@@ -176,7 +187,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     const file = e.target.files[0];
     //si el file existe emtonces se produce el disparo de actualizacion
     if (file) {
-      if (type === "wines") {
+      if (type === "Wines") {
         startUploading(file, setImagesWines, imagesWine)
       } else {
         startUploading(file, setImagesAccesories, imagesAccesories)
@@ -231,7 +242,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
         </div>
        
         {
-          type === "wines"
+          type === "Wines"
             ?
             <CreateWinesModify
               formValues={formValues}
@@ -257,8 +268,6 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
               modify={modify}
               deleteElement={deleteElement}
             />
-
-
         }
       </div>
     </Modal>

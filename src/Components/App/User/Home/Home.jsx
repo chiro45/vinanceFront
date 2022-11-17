@@ -18,14 +18,15 @@ export const Home = () => {
       category: {id: 1, category: 'Tinto'},
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      imagesWine:[
+      images:[
          {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
       ],
       name: "Vino Toro",
       price: 1500,
       stock: 2050,
       brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
+      type: "wines"
     },
     {
       active: true,
@@ -33,14 +34,15 @@ export const Home = () => {
       category: {id: 1, category: 'Tinto'},
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      imagesWine:[
+      images:[
          {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
       ],
       name: "Vino Toro",
       price: 1500,
       stock: 2050,
       brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
+      type: "wines"
     },
     {
       active: true,
@@ -48,14 +50,15 @@ export const Home = () => {
       category: {id: 1, category: 'Tinto'},
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      imagesWine:[
+      images:[
          {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
       ],
       name: "Vino Toro",
       price: 1500,
       stock: 2050,
       brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
+      type: "wines"
     },
     {
       active: true,
@@ -63,14 +66,15 @@ export const Home = () => {
       category: {id: 1, category: 'Tinto'},
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      imagesWine:[
+      images:[
          {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
       ],
       name: "Vino Toro",
       price: 1500,
       stock: 2050,
       brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'}
+      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
+      type: "wines"
     }
 
   ]

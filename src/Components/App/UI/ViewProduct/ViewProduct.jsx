@@ -2,7 +2,7 @@ import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick/lib/slider"
-import { addToCart} from "../../../../Actions/Cart"
+import { addToCart } from "../../../../Actions/Cart"
 import { useForm } from "../../../../Hooks/useForm"
 import { removeUser } from "../../../../Reducers/UserReducer"
 
@@ -24,16 +24,16 @@ export const ViewProduct = () => {
     adaptiveHeight: false,
   };
 
-  const [formValues, handleInputChange]= useForm({
+  const [formValues, handleInputChange] = useForm({
     cant: 1
   })
 
-  const {cant} = formValues
+  const { cant } = formValues
 
-  const handleAddToCart = ()=>{
+  const handleAddToCart = () => {
     dispatch(addToCart(vino.productActive, parseInt(cant)))
   }
-  
+
   return (
     <div className="containerProductView">
       <div className="inicio__containerHeader">
@@ -76,19 +76,19 @@ export const ViewProduct = () => {
             </ul>
           </div>
         </div>
-        
+
       </div>
       <div className="carrouselItems">
         <div className="Containercarrousel">
           <Slider {...settings}>
-            { 
-            vino.productActive.images
-            ?
-              vino.productActive.images.map((el, i) => (
-                <img key={i} className="img" src={el.image} />
+            {
+              vino.productActive.images
+                ?
+                vino.productActive.images.map((el, i) => (
+                  <img key={i} className="img" src={el.image} />
 
-              ))
-            :null
+                ))
+                : null
             }
 
           </Slider>
@@ -100,24 +100,24 @@ export const ViewProduct = () => {
             <h1 > {vino.productActive.name}</h1>
           </div>
           {
-            vino.productActive.brand 
-            ?
-            
-          <div className="containerPropProduct__h4">
-          <h4>Categoria: {vino.productActive.category.category}</h4>
-        </div>
-        
-            : null
-            
+            vino.productActive.brand
+              ?
+
+              <div className="containerPropProduct__h4">
+                <h4>Categoria: {vino.productActive.category.category}</h4>
+              </div>
+
+              : null
+
           }
-            {
-              vino.productActive.brand 
+          {
+            vino.productActive.brand
               ?
               <div className="containerPropProduct__h4">
-          <h4>Varietal: {vino.productActive.varietal.varietal}</h4>
-        </div>
-        : null
-            }
+                <h4>Varietal: {vino.productActive.varietal.varietal}</h4>
+              </div>
+              : null
+          }
 
           <div className="containerPropProduct__h4">
             <h4>Precio: ${vino.productActive.price}</h4>
@@ -134,7 +134,7 @@ export const ViewProduct = () => {
             </div>
           </div>
           <div className="containerDescription">
-            <p>Descripcion: <br/> {vino.productActive.description}</p>
+            <p>Descripcion: <br /> {vino.productActive.description}</p>
           </div>
 
 

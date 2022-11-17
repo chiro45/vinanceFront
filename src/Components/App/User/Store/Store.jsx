@@ -75,7 +75,7 @@ useEffect(() => {
               wines.map((vino, i) => (
                 <div key={i} className="list">
                   <CardItemList
-                    type={"wines"}
+                    type={vino.type}
                     vino={vino}
                     userMode={userMode}
                   />
