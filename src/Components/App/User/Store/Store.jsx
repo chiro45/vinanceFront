@@ -21,7 +21,7 @@ const handleOpenModal = ()=>{
 const [wines, setWines] = useState([ ])
 const getAllWInes = ()=>{
   const token =  localStorage.getItem("token")
-        
+        //TODO: tipo dinamico
         fetch(`${process.env.REACT_APP_URLBASE}wines`, {
             method: "GET",
             headers: {
@@ -34,7 +34,7 @@ const getAllWInes = ()=>{
             .then((data) => {
               if(data.length > 0){
                 setWines(data)
-                console.log(data)
+              
               }})
             .catch((err) => console.log(err));
           
@@ -75,6 +75,7 @@ useEffect(() => {
               wines.map((vino, i) => (
                 <div key={i} className="list">
                   <CardItemList
+                  getAllWInes={getAllWInes }
                     type={vino.type}
                     vino={vino}
                     userMode={userMode}

@@ -74,8 +74,8 @@ export const AccessoriesCreateModify = ({
 
               </div>
               <div className="containerButtonsOpt">
-              <MDBBtn className="ButtonModal"  onClick={() => { modify("accesories") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
-              <MDBBtn className="ButtonModal"  onClick={() => { deleteElement("accesories") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal"  onClick={() => { modify("Accesories") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal"  onClick={() => { deleteElement("Accesories") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
               </div>
               </div>
   )

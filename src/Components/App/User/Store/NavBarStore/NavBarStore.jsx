@@ -25,14 +25,6 @@ const navigate = useNavigate()
               </ul>
             </div>
             <div className="divList">
-              <h2 className="titleList">Marcas</h2>
-              <ul>
-                <li>Los Haroldos</li>
-                <li>Zuccardi</li>
-                <li>Durigutti</li>
-              </ul>
-            </div>
-            <div className="divList">
               <h2 className="titleList">Precio</h2>
               <ul>
                 <li>Mayor precio</li>

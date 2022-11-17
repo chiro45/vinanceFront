@@ -8,7 +8,7 @@ import { addActiveProduct, removeActiveProduct } from "../../../../Actions/Produ
 import { ModalModify } from "../Modals/ModalModify/ModalModify"
 import "./CardItemList.scss"
 
-export const CardItemList = ({ vino, userMode, type }) => {
+export const CardItemList = ({ vino, userMode, type, getAllWInes  }) => {
     const user = useSelector(state => state.userReducer)
     const { varietal, name, price,discount } = vino
     const navigate = useNavigate()
@@ -19,8 +19,6 @@ export const CardItemList = ({ vino, userMode, type }) => {
         dispatch(addActiveProduct(vino))
         navigate('/product')
     }
-
-
     const handleClickAddCarrito = () => {
         if (user.userName !== null) {
             dispatch(addToCart(vino))
@@ -47,6 +45,7 @@ export const CardItemList = ({ vino, userMode, type }) => {
         <div className={"ContainerCardItemList"}>
             <div>
                 <ModalModify
+                    getAllWInes={getAllWInes }
                     type={vino.type}
                     vino={vino}
                     openModal={openModal}

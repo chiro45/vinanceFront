@@ -123,6 +123,9 @@ export const ViewProduct = () => {
             <h4>Precio: ${vino.productActive.price}</h4>
           </div>
           <div className="containerPropProduct__h4">
+            <h4>Marca: {vino.productActive.brand.brand}</h4>
+          </div>
+          <div className="containerPropProduct__h4">
             <h4>Cantidad: {vino.productActive.stock}</h4>
           </div>
           <div className="containerCompra">

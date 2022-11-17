@@ -13,8 +13,8 @@ import { CreateWinesModify } from "./ModifyWines/CreateWinesModify";
 
 
 
-export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
-
+export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes  }) => {
+   
   const [formValues, handleInputChange, reset] = useForm({
     //wines
     name: vino !== null && type ==="Wines" ? vino.name: "",
@@ -23,8 +23,8 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     stock: vino !== null && type ==="Wines" ? vino.stock: 0,
     active:vino !== null && type ==="Wines" ? vino.active: true,
     brand:vino !== null && type ==="Wines" ? vino.brand.brand: "",
-    category:vino !== null && type ==="Wines" ? vino.category.category: "",
-    varietal:vino !== null && type ==="Wines" ? vino.varietal.varietal: "",
+    category:vino !== null && type ==="Wines" ? vino.category.id: "",
+    varietal:vino !== null && type ==="Wines" ? vino.varietal.id: "",
     //accesories
     nameAccesories: vino !== null && type ==="Accessories" ? vino.name: "",
     descriptionAccesories: vino !== null && type ==="Accessories" ? vino.description: "",
@@ -50,9 +50,11 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
     activeAccesories,
 
   } = formValues
+ 
   const [imagesWine, setImagesWines] = useState(vino ? vino.images : [])
   const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.images : [])
   const deleteElement = (typeDelete)=>{
+    //TODO: TIPO DINAMICO
     const token = localStorage.getItem("token")
     fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
       method: "DELETE",
@@ -62,65 +64,83 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
         "Authorization": `Bearer ${token}`,
       }
     })
-      .then((response) => response.json())
+      .then((response) => {
+        getAllWInes() 
+        closeModal()
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Producto ha eliminado correctamente!',
+          showConfirmButton: false,
+          timer: 800
+        })
+        response.json() 
+    })
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }
-  const modify =  (typeFecth) => {
+  const modify =  async(typeFecth) => {
     const token = localStorage.getItem("token")
     if (typeFecth === "Wines") {
       //fetch brand
-      const idBrand = {}
-      fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
+      let idBrand = {}
+      await fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           brand: brand
         })
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-      //fetch wines
-      fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json, text/plain",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name: name,
-          description: description,
-          price: price,
-          stock: stock,
-          active: active,
-          brand: { id: `${idBrand.id}` },
-          category: { id: `${category}` },
-          varietal: { id: `${varietal}` },
-          images: imagesWine
-        })
-      })
-        .then((response) => {})
         .then((data) => {
+          console.warn(data)
+          idBrand  = data
+        })
+        .catch((err) => console.warn(err));
+       //fetch wines
+
+       await fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
+         method: "PUT",
+         headers: {
+           Accept: "application/json, text/plain",
+           "Content-Type": "application/json",
+           "Authorization": `Bearer ${token}`
+         },
+         body: JSON.stringify({
+           name: name,
+           description: description,
+           price: price,
+           stock: stock,
+           active: active,
+           brand: { id: `${idBrand.id}` },
+           category: { id: `${category}`},
+           varietal: { id: `${varietal}` },
+           images: imagesWine
+         })
+       })
+         .then((response) => response.json())
+         .then((data) => {
+          getAllWInes() 
+         
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Producto modificado correctamente!',
+            title: 'Producto creado correctamente!',
             showConfirmButton: false,
             timer: 800
           })
-          handleOpenModal()
-          console.log(data)
-        })
-        .catch((err) => {
-          Swal.fire("Error", "Intenta nuevamente", "error")
-          console.log(err)
-        });
+          
+           handleOpenModal()
+           
+         })
+         .catch((err) => {
+           Swal.fire("Error", "Intenta nuevamente", "error")
+          console.warn(err)
+         });
     } else {
       //fetch accesories
       fetch(`${process.env.REACT_APP_URLBASE}accessories`, {
@@ -163,22 +183,22 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type }) => {
   const closeModal = () => {
     handleOpenModal()
 
-    reset({
-      name: "",
-      description: "",
-      price: 0,
-      stock: 0,
-      active: true,
-      brand: "",
-      category: 0,
-      varietal: 0,
-      //accesories
-      nameAccesories: "",
-      descriptionAccesories: "",
-      priceAccesories: 0,
-      stockAccesories: 0,
-      activeAccesories: true
-    })
+    // reset({
+    //   name: "",
+    //   description: "",
+    //   price: 0,
+    //   stock: 0,
+    //   active: true,
+    //   brand: "",
+    //   category: 0,
+    //   varietal: 0,
+    //   //accesories
+    //   nameAccesories: "",
+    //   descriptionAccesories: "",
+    //   priceAccesories: 0,
+    //   stockAccesories: 0,
+    //   activeAccesories: true
+    // })
     setImagesWines([])
   };
   //evento que detecta que cambie

@@ -14,77 +14,75 @@ export const Home = () => {
   const arrProductSelected = [
     {
       active: true,
-      brand:{id: 19, brand: 'Vino Toro2'},
-      category: {id: 1, category: 'Tinto'},
+      brand: { id: 19, brand: 'Vino Tor' },
+      category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      images:[
-         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      images: [
+        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
       ],
-      name: "Vino Toro",
+      name: "2016 MESA TERRACE PINOT NOIR",
       price: 1500,
       stock: 2050,
-      brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
-      type: "wines"
+      brand: { id: 2, brand: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      type: "Wines"
     },
     {
       active: true,
-      brand:{id: 19, brand: 'Vino Toro2'},
-      category: {id: 1, category: 'Tinto'},
+      brand: { id: 19, brand: 'Vino Toro2' },
+      category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      images:[
-         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      images: [
+        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
       ],
-      name: "Vino Toro",
+      name: "VIAMONTE ICONO Malbec 2016",
       price: 1500,
       stock: 2050,
-      brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
-      type: "wines"
+      brand: { id: 2, brand: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      type: "Wines"
     },
     {
       active: true,
-      brand:{id: 19, brand: 'Vino Toro2'},
-      category: {id: 1, category: 'Tinto'},
+      brand: { id: 19, brand: 'Vino Toro2' },
+      category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      images:[
-         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      images: [
+        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
       ],
-      name: "Vino Toro",
+      name: "Los Haroldos Reserva Cabernet Franc",
       price: 1500,
       stock: 2050,
-      brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
-      type: "wines"
+      brand: { id: 2, brand: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      type: "Wines"
     },
     {
       active: true,
-      brand:{id: 19, brand: 'Vino Toro2'},
-      category: {id: 1, category: 'Tinto'},
+      brand: { id: 19, brand: 'Vino Toro2' },
+      category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
-      images:[
-         {id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg'}
+      images: [
+        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
       ],
-      name: "Vino Toro",
+      name: "Los Haroldos Estate Sauvignon Blanc",
       price: 1500,
       stock: 2050,
-      brand: {id: 2, brand: 'Cabernet Suavignon'},
-      varietal: {id: 2, varietal: 'Cabernet Suavignon'},
-      type: "wines"
+      brand: { id: 2, brand: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      type: "Wines"
     }
 
   ]
   const navigate = useNavigate()
 
-
-
   return (
     <div className="ContainerHome">
-      <HeaderHome/>
+      <HeaderHome />
       <Carrousel />
       <div className="Home__containerprodDestacados">
         <b></b>
@@ -98,7 +96,7 @@ export const Home = () => {
           arrProductSelected.map((vino, i) => (
             <CardItemList
               key={i}
-              type={"wines"}
+              type={"Wines"}
               vino={vino}
             />
           ))
