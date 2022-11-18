@@ -2,6 +2,7 @@ import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick/lib/slider"
+import Swal from "sweetalert2"
 import { addToCart } from "../../../../Actions/Cart"
 import { useForm } from "../../../../Hooks/useForm"
 import { removeUser } from "../../../../Reducers/UserReducer"
@@ -31,7 +32,12 @@ export const ViewProduct = () => {
   const { cant } = formValues
 
   const handleAddToCart = () => {
-    dispatch(addToCart(vino.productActive, parseInt(cant)))
+    if(cant <= vino.productActive.stock){
+      dispatch(addToCart(vino.productActive, parseInt(cant)))
+      Swal.fire("Perfecto!", "Añadido correctamente", "success")
+    }else{
+      Swal.fire("Error!", "No hay Stock Suficiente", "error")
+    }
   }
 
   return (
@@ -102,7 +108,7 @@ export const ViewProduct = () => {
             <h1 > {vino.productActive.name}</h1>
           </div>
           {
-            vino.productActive.brand
+            vino.type === "Wines"
               ?
 
               <div className="containerPropProduct__h4">
@@ -113,7 +119,7 @@ export const ViewProduct = () => {
 
           }
           {
-            vino.productActive.brand
+            vino.type === "Wines"
               ?
               <div className="containerPropProduct__h4">
                 <h4>Varietal: {vino.productActive.varietal.varietal}</h4>
@@ -124,9 +130,13 @@ export const ViewProduct = () => {
           <div className="containerPropProduct__h4">
             <h4>Precio: ${vino.productActive.price}</h4>
           </div>
-          <div className="containerPropProduct__h4">
+          {
+            vino.type === "Wines"
+            ?<div className="containerPropProduct__h4">
             <h4>Marca: {vino.productActive.brand.brand}</h4>
           </div>
+          : null
+          }
           <div className="containerPropProduct__h4">
             <h4>Cantidad: {vino.productActive.stock}</h4>
           </div>

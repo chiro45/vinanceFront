@@ -51,7 +51,7 @@ export const CartItem = ({item}) => {
     </div>
     </div>
    <div>
-   <img src={item.item.images ? item.item.images[0].image : ""}/>
+   <img src={item.item.images ? item.item.images[0].image : "https://josefacchin.com/wp-content/uploads/2020/02/como-quitar-el-fondo-de-una-imagen.png"}/>
    </div>
 
     </div>
