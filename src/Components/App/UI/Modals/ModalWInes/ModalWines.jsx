@@ -13,7 +13,7 @@ import { AccessoriesCreate } from "./WineProductCreate/AccessoriesCreate";
 
 
 export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
-
+  
   const [formValues, handleInputChange, reset] = useForm({
     //wines
     name: "",
@@ -104,8 +104,8 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
             timer: 800
           })
           console.warn(data)
+          getAllWInes()
            handleOpenModal()
-           getAllWInes()
          })
          .catch((err) => {
            Swal.fire("Error", "Intenta nuevamente", "error")

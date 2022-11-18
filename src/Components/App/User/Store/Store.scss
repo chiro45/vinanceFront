@@ -99,3 +99,26 @@ $secondaryColor: #b7a3af;
 .containersas{
   max-height: 80vh;
 } 
+
+.containerPaginate{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: flex-end;
+    margin-bottom: -1rem;
+    button{
+        margin-left: .4rem;
+    }
+}
+.containerNUmber{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    width: 5%;
+    p{
+        text-align: center;
+        font-size: 1vw;
+        margin: .4rem
+    };
+}

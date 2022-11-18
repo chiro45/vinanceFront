@@ -1,40 +1,35 @@
 
-import { useNavigate } from 'react-router-dom'
 import "../Store.scss"
-export const NavBarStore = () => {
-const navigate = useNavigate()
+export const NavBarStore = ({setFetchType}) => {
 
+  const urlVarietal = "wines/searchVarietal/paged/"
+  const urlCategory = "wines/searchForCategory/paged/"
   return (
     <div className="storeContainerBar">
             <div className="divList">
               <h2 className="titleList">Varietal</h2>
               <ul>
-                <li>Malbec</li>
-                <li>Suavignon Blanc</li>
-                <li>Cabernet Suavignon</li>
-                <li>Cabernet Franc</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Malbec`)}}>Malbec</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Suavignon Blanc`)}}>Suavignon Blanc</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Cabernet Suavignon`)}}>Cabernet Suavignon</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Cabernet Franc`)}}>Cabernet Franc</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Chardonnay`)}}>Chardonnay</li>
+                <li onClick={()=>{setFetchType(`${urlVarietal}Pinot Noir`)}}>Pinot Noir</li>
               </ul>
             </div>
             <div className="divList">
               <h2 className="titleList">Tipo</h2>
               <ul>
-                <li>Rosado</li>
-                <li>Tinto</li>
-                <li>Blanco</li>
-                <li></li>
+                <li onClick={()=>{setFetchType(`${urlCategory}Rose`)}}>Rosado</li>
+                <li onClick={()=>{setFetchType(`${urlCategory}Tinto`)}}>Tinto</li>
+                <li onClick={()=>{setFetchType(`${urlCategory}Blanco`)}}>Blanco</li>
+                
               </ul>
             </div>
             <div className="divList">
-              <h2 className="titleList">Precio</h2>
+              <h2 className="titleList" >Accesorios</h2>
               <ul>
-                <li>Mayor precio</li>
-                <li>Menor Precio</li>
-              </ul>
-            </div>
-            <div className="divList">
-              <h2 className="titleList">Accesorios</h2>
-              <ul>
-                <li onClick={()=> navigate("/storeaccesories")}>Nuevos Productos</li>
+                <li onClick={()=>{setFetchType("accessories/paged")}}>Nuevos Productos</li>
               </ul>
             </div>
           </div>

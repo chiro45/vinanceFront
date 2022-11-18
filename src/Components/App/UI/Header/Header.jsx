@@ -5,11 +5,41 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import "./Header.scss"
 import { removeUser } from "../../../../Reducers/UserReducer"
+import { useForm } from "../../../../Hooks/useForm"
+import { useEffect } from "react"
 
-export const Header = () => {
+export const Header = ({setWines, setPageable, pageable,setActualPage}) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
+
+  const [formValues,handleInputChange] = useForm({
+    search : ""
+  })
+  const {search} = formValues
+
+  useEffect(()=>{
+    
+  },[pageable])
+
+
+  const handleSearchWines = ()=>{
+    const token = localStorage.getItem("token")
+    fetch(`${process.env.REACT_APP_URLBASE}wines/searchBarPaged/${search}/${pageable}`,{
+    method: "GET",
+    headers: {
+          Accept:
+            "application/json, text/plain",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+    }})     .then((response) => response.json())
+            .then((data) => {
+              setWines(data.content)
+              setPageable(data.totalPages -1)
+            }
+              )
+            .catch((err) => console.log(err))
+  }
   return (
     <div className="HeaderContainerPrincipal">
       <div className="HeaderContainerPricicpal__containerElements">
@@ -22,10 +52,18 @@ export const Header = () => {
         <div className="HeaderContainerPricicpal__container-search">
           <div className="HeaderContainerPricicpal__input">
               <input
-              placeholder={"Busca un producto"} className="inputSearch" type="text"/>
+                placeholder={"Busca un producto"} 
+                onChange={handleInputChange} 
+                value={search}
+                name="search"
+                className="inputSearch"
+                type="text"/>
           </div>
           <div className="containerSearchButton">
-            <MDBBtn>Buscar <MDBIcon fas icon="search" /></MDBBtn>
+            <MDBBtn onClick={()=>{
+              handleSearchWines()
+              setActualPage(0)
+            }}>Buscar <MDBIcon fas icon="search" /></MDBBtn>
           </div>
           
 
