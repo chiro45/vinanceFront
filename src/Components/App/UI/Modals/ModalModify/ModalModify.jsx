@@ -258,7 +258,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes
     >
       <div className="ContainerModalWINES">
         <div className="ContainerModalWINES__title">
-          <h1>Modificar un roducto</h1>
+          <h1>Modificar un producto</h1>
         </div>
        
         {

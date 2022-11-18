@@ -104,8 +104,8 @@ export const CreateWinesModify= ({
 
               </div>
               <div className="containerButtonsOpt">
-              <MDBBtn className="ButtonModal" onClick={() => { modify("Wines") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
-              <MDBBtn className="ButtonModal" onClick={() => { deleteElement("Wines") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal" onClick={() => { modify("Wines") }}> Modificar vino<MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal" onClick={() => { deleteElement("Wines") }}> Eliminar vino <MDBIcon fas icon="plus" /></MDBBtn>
               </div>
             </div>
   )

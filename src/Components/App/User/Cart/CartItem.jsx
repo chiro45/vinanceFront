@@ -51,7 +51,7 @@ export const CartItem = ({item}) => {
     </div>
     </div>
    <div>
-   <img src={item.item.imagesWine ? item.item.imagesWine[0].image : item.item.imagesAccesory[0].image}/>
+   <img src={item.item.images ? item.item.images[0].image : ""}/>
    </div>
 
     </div>
