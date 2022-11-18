@@ -7,8 +7,8 @@ import "./Header.scss"
 import { removeUser } from "../../../../Reducers/UserReducer"
 import { useForm } from "../../../../Hooks/useForm"
 import { useEffect } from "react"
+export const Header = ({setWines, setPageable, actualPage,setActualPage, setSearch, Search}) => {
 
-export const Header = ({setWines, setPageable, pageable,setActualPage}) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
@@ -19,20 +19,23 @@ export const Header = ({setWines, setPageable, pageable,setActualPage}) => {
   const {search} = formValues
 
   useEffect(()=>{
-    
-  },[pageable])
+    if(Search===false){
+      handleSearchWines()
+    }
+  },[actualPage])
 
 
   const handleSearchWines = ()=>{
     const token = localStorage.getItem("token")
-    fetch(`${process.env.REACT_APP_URLBASE}wines/searchBarPaged/${search}/${pageable}`,{
+    fetch(`${process.env.REACT_APP_URLBASE}wines/searchBarPaged/${search}/${actualPage}`,{
     method: "GET",
     headers: {
           Accept:
             "application/json, text/plain",
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-    }})     .then((response) => response.json())
+            }})     
+            .then((response) => response.json())
             .then((data) => {
               setWines(data.content)
               setPageable(data.totalPages -1)
@@ -61,8 +64,9 @@ export const Header = ({setWines, setPageable, pageable,setActualPage}) => {
           </div>
           <div className="containerSearchButton">
             <MDBBtn onClick={()=>{
-              handleSearchWines()
               setActualPage(0)
+              setSearch(false)
+              handleSearchWines()
             }}>Buscar <MDBIcon fas icon="search" /></MDBBtn>
           </div>
           
