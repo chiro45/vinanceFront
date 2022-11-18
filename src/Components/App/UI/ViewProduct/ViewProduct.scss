@@ -90,12 +90,8 @@ $secondaryColor: #b7a3af;
 }
 .img{
     height: 100%;
-    width: 100%;
-    object-fit: 100% 100%;
+    object-fit: contain;
     border-radius: .4rem;
-   &:focus{
-    border: none;
-   }
     
 }
 .containerCompra{
@@ -103,15 +99,21 @@ $secondaryColor: #b7a3af;
     width: 80%;
     justify-content: space-around !important;
     align-items: center;
-  
 }
 .imgProductView{
     border-radius: .4rem;
-    padding: 5rem;
     height: 50vh;
     width: 100%;
     display: flex;
+    justify-content: center;
+}
+.imgDiv{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
-   background-image: url("https://static.wixstatic.com/media/5a4547_55ac56e601ed40fb8972029f1997de45~mv2.jpg/v1/fill/w_1074,h_131,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/5a4547_55ac56e601ed40fb8972029f1997de45~mv2.jpg");
-    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: .4rem;
 }

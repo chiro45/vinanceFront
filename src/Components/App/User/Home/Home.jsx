@@ -71,13 +71,13 @@ export const Home = () => {
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
       images: [
-        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
+        { id: 34, image: 'http://d3ugyf2ht6aenh.cloudfront.net/stores/001/211/660/products/maljunta-cab-fran-res1-071eba501bca83feae16146969257952-640-0.png' }
       ],
-      name: "2016 MESA TERRACE PINOT NOIR",
+      name: "Vino malajunta cabernet Franc",
       price: 1500,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
-      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Franc' },
       type: "Wines"
     },
     
