@@ -120,14 +120,17 @@ export const Store = () => {
                 (wines !== undefined  && wines.length > 1)
                   ?
                   wines.map((vino, i) => (
-                    <div key={i} className="list animate__animated animate__animated">
-                      <CardItemList
-                        getAllWInes={getAllWInes}
-                        type={vino.type}
-                        vino={vino}
-                        userMode={userMode}
-                      />
-                    </div>
+                    vino.active=== false && userMode !== "seller"
+                    ? null
+                    : <div key={i} className="list animate__animated animate__animated">
+                    <CardItemList
+                      getAllWInes={getAllWInes}
+                      type={vino.type}
+                      vino={vino}
+                      userMode={userMode}
+                    />
+                  </div>
+
                   ))
                   : <h1>Esperando Vinos</h1>
               }

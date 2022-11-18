@@ -1,19 +1,34 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import { useForm } from "../../../../../../Hooks/useForm";
 
 import "../../Modals.scss"
 import "../ModalModify.scss"
 
 export const AccessoriesCreateModify = ({
-     formValues,
      imagesAccesories = [], 
-     handleInputChange,
      handlePHOTO, 
      handleFileChange,
      handleDeleteImg,
-     modify,
-    deleteElement
+     deleteElement,
+     vino,
+     setImagesAccesories,
+     handleOpenModal,
+     getAllWInes
     }) => {
-  
+      useEffect(() => {
+        setImagesAccesories(vino.images)
+      }, []);
+      const [formValues, handleInputChange, ] = useForm({
+        //accesories
+        nameAccesories: (vino !== null && vino.type ==="Accessories") ? vino.name: "",
+        descriptionAccesories: (vino !== null && vino.type ==="Accessories") ? vino.description: "",
+        priceAccesories: (vino !== null && vino.type ==="Accessories") ? vino.price: 0,
+        stockAccesories: (vino !== null && vino.type ==="Accessories") ? vino.stock: 0,
+        activeAccesories: (vino !== null && vino.type ==="Accessories") ? vino.active : true,
+    
+      })
   const{
      //accesories
      nameAccesories,
@@ -23,6 +38,42 @@ export const AccessoriesCreateModify = ({
      activeAccesories,
    } = formValues
   
+   const modify =  async() => {
+    const token = localStorage.getItem("token")
+  
+      fetch(`${process.env.REACT_APP_URLBASE}accessories/${vino.id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json, text/plain",
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: nameAccesories,
+          description: descriptionAccesories,
+          price: priceAccesories,
+          stock: stockAccesories,
+          active: activeAccesories,
+          images: imagesAccesories,
+        })
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto Modificado correctamente!',
+            showConfirmButton: false,
+            timer: 800
+          })
+          handleOpenModal()
+          getAllWInes()
+        })
+        .catch((err) => {
+          Swal.fire("Error", "Intenta nuevamente", "error")
+          console.log(err)
+        });
+  }
     return (
     <div className="ContainerCreateWines">
               <div className="ContainerCreateWines__Title" >
@@ -74,7 +125,7 @@ export const AccessoriesCreateModify = ({
 
               </div>
               <div className="containerButtonsOpt">
-              <MDBBtn className="ButtonModal"  onClick={() => { modify("Accesories") }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal"  onClick={() => { modify() }}>Modificar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
               <MDBBtn className="ButtonModal"  onClick={() => { deleteElement("Accesories") }}>Eliminar Accesorio <MDBIcon fas icon="plus" /></MDBBtn>
               </div>
               </div>

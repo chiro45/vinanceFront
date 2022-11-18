@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 import Modal from "react-modal/lib/components/Modal";
-import { useForm } from "../../../../../Hooks/useForm"
+
 import { startUploading } from "../../../../../Helpers/fileUpload";
 import Swal from "sweetalert2";
 
@@ -13,50 +13,18 @@ import { CreateWinesModify } from "./ModifyWines/CreateWinesModify";
 
 
 
-export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes  }) => {
-   
-  const [formValues, handleInputChange, reset] = useForm({
-    //wines
-    name: vino !== null && type ==="Wines" ? vino.name: "",
-    description:vino !== null && type ==="Wines" ? vino.description: "",
-    price: vino !== null  && type ==="Wines"? vino.price: 0,
-    stock: vino !== null && type ==="Wines" ? vino.stock: 0,
-    active:vino !== null && type ==="Wines" ? vino.active: true,
-    brand:vino !== null && type ==="Wines" ? vino.brand.brand: "",
-    category:vino !== null && type ==="Wines" ? vino.category.id: "",
-    varietal:vino !== null && type ==="Wines" ? vino.varietal.id: "",
-    //accesories
-    nameAccesories: vino !== null && type ==="Accessories" ? vino.name: "",
-    descriptionAccesories: vino !== null && type ==="Accessories" ? vino.description: "",
-    priceAccesories: vino !== null && type ==="Accessories" ? vino.price: 0,
-    stockAccesories: vino !== null && type ==="Accessories" ? vino.stock: 0,
-    activeAccesories: true,
+export const ModalModify = ({ openModal, handleOpenModal,vino, type, 
+getAllWInes  }) => {
+  
 
-  })
-  const {
-    name,
-    description,
-    price,
-    stock,
-    active,
-    brand,
-    category,
-    varietal,
-    //accesories
-    nameAccesories,
-    descriptionAccesories,
-    priceAccesories,
-    stockAccesories,
-    activeAccesories,
-
-  } = formValues
  
-  const [imagesWine, setImagesWines] = useState(vino ? vino.images : [])
-  const [imagesAccesories, setImagesAccesories] = useState(vino ? vino.images : [])
+  const [imagesWine, setImagesWines] = useState([])
+  const [imagesAccesories, setImagesAccesories] = useState( [])
+ 
   const deleteElement = (typeDelete)=>{
-    //TODO: TIPO DINAMICO
+  
     const token = localStorage.getItem("token")
-    fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
+    fetch(`${process.env.REACT_APP_URLBASE}${typeDelete=== "Wines" ? "Wines": "Accessories"}/${vino.id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain",
@@ -79,127 +47,12 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }
-  const modify =  async(typeFecth) => {
-    const token = localStorage.getItem("token")
-    if (typeFecth === "Wines") {
-      //fetch brand
-      let idBrand = {}
-      await fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          brand: brand
-        })
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.warn(data)
-          idBrand  = data
-        })
-        .catch((err) => console.warn(err));
-       //fetch wines
-
-       await fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
-         method: "PUT",
-         headers: {
-           Accept: "application/json, text/plain",
-           "Content-Type": "application/json",
-           "Authorization": `Bearer ${token}`
-         },
-         body: JSON.stringify({
-           name: name,
-           description: description,
-           price: price,
-           stock: stock,
-           active: active,
-           brand: { id: `${idBrand.id}` },
-           category: { id: `${category}`},
-           varietal: { id: `${varietal}` },
-           images: imagesWine
-         })
-       })
-         .then((response) => response.json())
-         .then((data) => {
-          getAllWInes() 
-         
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto creado correctamente!',
-            showConfirmButton: false,
-            timer: 800
-          })
-          
-           handleOpenModal()
-           
-         })
-         .catch((err) => {
-           Swal.fire("Error", "Intenta nuevamente", "error")
-          console.warn(err)
-         });
-    } else {
-      //fetch accesories
-      fetch(`${process.env.REACT_APP_URLBASE}accessories`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name: nameAccesories,
-          description: descriptionAccesories,
-          price: priceAccesories,
-          stock: stockAccesories,
-          active: activeAccesories,
-          images: imagesAccesories,
-        })
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto Modificado correctamente!',
-            showConfirmButton: false,
-            timer: 800
-          })
-          handleOpenModal()
-          console.log(data)
-        })
-        .catch((err) => {
-          Swal.fire("Error", "Intenta nuevamente", "error")
-          console.log(err)
-        });
-    }
-
-  }
+  
 
 
   const closeModal = () => {
     handleOpenModal()
 
-    // reset({
-    //   name: "",
-    //   description: "",
-    //   price: 0,
-    //   stock: 0,
-    //   active: true,
-    //   brand: "",
-    //   category: 0,
-    //   varietal: 0,
-    //   //accesories
-    //   nameAccesories: "",
-    //   descriptionAccesories: "",
-    //   priceAccesories: 0,
-    //   stockAccesories: 0,
-    //   activeAccesories: true
-    // })
-    setImagesWines([])
   };
   //evento que detecta que cambie
   const handleFileChange = async (e) => {
@@ -218,19 +71,7 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes
   }
 
 
-
-  const handleSelect = (e, type) => {
-
-    if (type === "varietal") {
-      formValues.varietal = e.value
-    } else {
-      formValues.category = e.value
-    }
-
-  }
-
   const handlePHOTO = () => {
-
     if (imagesWine.length < 4 && imagesAccesories.length < 4) {
       document.getElementById("fileSelector").click()
     } else {
@@ -265,28 +106,28 @@ export const ModalModify = ({ openModal, handleOpenModal,vino, type, getAllWInes
           type === "Wines"
             ?
             <CreateWinesModify
-              formValues={formValues}
-              handleInputChange={handleInputChange}
-              handleSelect={handleSelect}
+              vino={vino}
+              handleOpenModal={handleOpenModal}
+              setImagesWines={setImagesWines}
               handlePHOTO={handlePHOTO}
               imagesWine={imagesWine}
               handleFileChange={handleFileChange}
               handleDeleteImg={handleDeleteImg}
-              modify={modify}
               deleteElement={deleteElement}
+              getAllWInes={getAllWInes}
             />
 
             :
             <AccessoriesCreateModify
-              formValues={formValues}
-              handleInputChange={handleInputChange}
-              handleSelect={handleSelect}
+              vino={vino}
+              handleOpenModal={handleOpenModal}
+              setImagesAccesories={setImagesAccesories}
               handlePHOTO={handlePHOTO}
               imagesAccesories={imagesAccesories}
               handleFileChange={handleFileChange}
               handleDeleteImg={handleDeleteImg}
-              modify={modify}
               deleteElement={deleteElement}
+              getAllWInes={getAllWInes}
             />
         }
       </div>

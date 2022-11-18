@@ -1,30 +1,121 @@
 
 import { MDBBtn, MDBIcon, MDBSelect } from "mdb-react-ui-kit";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import { useForm } from "../../../../../../Hooks/useForm";
 
 import "../../Modals.scss"
 import "../ModalModify.scss"
 
 export const CreateWinesModify= ({
-    formValues,
+    vino,
     imagesWine = [],
-    handleInputChange,
     handlePHOTO,
-    handleSelect,
+    handleOpenModal,
     handleFileChange,
     handleDeleteImg,
-    modify,
-    deleteElement 
+    deleteElement,
+    setImagesWines,
+    getAllWInes 
     }) => {
-
+      useEffect(() => {
+        setImagesWines(vino.images)
+      }, []);
+      const [formValues, handleInputChange] = useForm({
+        //wines
+        name: (vino !== null && vino.type ==="Wines") ? vino.name: "",
+        description:(vino !== null && vino.type ==="Wines") ? vino.description: "",
+        price: (vino !== null  && vino.type ==="Wines")? vino.price: 0,
+        stock: (vino !== null && vino.type ==="Wines") ? vino.stock: 0,
+        active:(vino !== null && vino.type ==="Wines") ? vino.active: true,
+        brand:(vino !== null && vino.type ==="Wines") ? vino.brand.brand: "",
+        category:(vino !== null && vino.type ==="Wines") ? vino.category.id: "",
+        varietal:(vino !== null && vino.type ==="Wines") ? vino.varietal.id: "",
+       
+    
+      })
     
     const {
-        name,
-        description,
-        price,
-        stock,
-        active,
-        brand
+      name,
+      description,
+      price,
+      stock,
+      active,
+      brand,
+      category,
+      varietal
       } = formValues
+      const handleSelect = (e, type) => {
+
+        if (type === "varietal") {
+          formValues.varietal = e.value
+        } else {
+          formValues.category = e.value
+        }
+    
+      }
+
+      const modify =  async() => {
+        const token = localStorage.getItem("token")
+          //fetch brand
+          let idBrand = {}
+          await fetch(`${process.env.REACT_APP_URLBASE}brands/searchOrSave`, {
+            method: "POST",
+            headers: {
+              Accept: "application/json, text/plain",
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              brand: brand
+            })
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.warn(data)
+              idBrand  = data
+            })
+            .catch((err) => console.warn(err));
+           //fetch wines
+    
+           await fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
+             method: "PUT",
+             headers: {
+               Accept: "application/json, text/plain",
+               "Content-Type": "application/json",
+               "Authorization": `Bearer ${token}`
+             },
+             body: JSON.stringify({
+               name: name,
+               description: description,
+               price: price,
+               stock: stock,
+               active: active,
+               brand: { id: `${idBrand.id}` },
+               category: { id: `${category}`},
+               varietal: { id: `${varietal}` },
+               images: imagesWine
+             })
+           })
+             .then((response) => response.json())
+             .then((data) => {
+              
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Producto creado correctamente!',
+                showConfirmButton: false,
+                timer: 800
+              })
+              getAllWInes()
+               handleOpenModal()
+               console.log(data)
+             })
+             .catch((err) => {
+               console.log(err)
+               Swal.fire("Error", "Intenta nuevamente", "error")
+             });
+            }
   return (
     <div className="ContainerCreateWines">
               <div className="ContainerCreateWines__Title" >
@@ -104,7 +195,7 @@ export const CreateWinesModify= ({
 
               </div>
               <div className="containerButtonsOpt">
-              <MDBBtn className="ButtonModal" onClick={() => { modify("Wines") }}> Modificar vino<MDBIcon fas icon="plus" /></MDBBtn>
+              <MDBBtn className="ButtonModal" onClick={() => { modify() }}> Modificar vino<MDBIcon fas icon="plus" /></MDBBtn>
               <MDBBtn className="ButtonModal" onClick={() => { deleteElement("Wines") }}> Eliminar vino <MDBIcon fas icon="plus" /></MDBBtn>
               </div>
             </div>

@@ -13,6 +13,24 @@ export const Home = () => {
 
   const arrProductSelected = [
     {
+      id: 5000,
+      active: true,
+      brand: { id: 19, brand: 'Giorgio Gieco' },
+      category: { id: 1, category: 'Malbec' },
+      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
+      discount: 4356,
+      images: [
+        { id: 34, image: 'https://images.vivino.com/thumbs/WtMN5CptRACOR_oqitzXVw_pb_600x600.png' }
+      ],
+      name: "Giorgio Gieco - Malbec Special Selection ",
+      price: 1500,
+      stock: 2050,
+      brand: { id: 2, brand: 'Cabernet Suavignon' },
+      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
+      type: "Wines"
+    },
+    {
+      id: 5001,
       active: true,
       brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
@@ -29,15 +47,16 @@ export const Home = () => {
       type: "Wines"
     },
     {
+      id: 5002,
       active: true,
-      brand: { id: 19, brand: 'Vino Toro2' },
+      brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
       images: [
-        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
+        { id: 34, image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/812/913/products/es-cs-161-66ec632412bcb31d3a15435061546040-1024-1024.jpg' }
       ],
-      name: "VIAMONTE ICONO Malbec 2016",
+      name: "Vino Alta Vista Estate Premium",
       price: 1500,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
@@ -45,37 +64,23 @@ export const Home = () => {
       type: "Wines"
     },
     {
+      id: 5003,
       active: true,
-      brand: { id: 19, brand: 'Vino Toro2' },
+      brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
       discount: 4356,
       images: [
         { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
       ],
-      name: "Los Haroldos Reserva Cabernet Franc",
+      name: "2016 MESA TERRACE PINOT NOIR",
       price: 1500,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
       varietal: { id: 2, varietal: 'Cabernet Suavignon' },
       type: "Wines"
     },
-    {
-      active: true,
-      brand: { id: 19, brand: 'Vino Toro2' },
-      category: { id: 1, category: 'Tinto' },
-      description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-      discount: 4356,
-      images: [
-        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
-      ],
-      name: "Los Haroldos Estate Sauvignon Blanc",
-      price: 1500,
-      stock: 2050,
-      brand: { id: 2, brand: 'Cabernet Suavignon' },
-      varietal: { id: 2, varietal: 'Cabernet Suavignon' },
-      type: "Wines"
-    }
+    
 
   ]
   const navigate = useNavigate()

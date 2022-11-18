@@ -58,7 +58,7 @@ export const CardItemList = ({ vino, userMode, type, getAllWInes  }) => {
                             </div>
                             : null
                     }
-                <div onClick={handleClickProduct}>
+                <div className={vino.active ===true ? "" : "disabled"} onClick={handleClickProduct}>
                     <div className="ContainerCardItemList__img">
                         <img src={vino.images[0] !== undefined ? vino.images[0].image : "https://img.freepik.com/foto-gratis/botella-vino-tinto-uvas_23-2148232185.jpg?w=2000"} />
                     </div>

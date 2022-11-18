@@ -27,8 +27,9 @@ $secondaryColor: #b7a3af;
         min-width: 9vw;
         max-width: 10vw;
         min-height: 20vh;
+        max-height: 20vh;
         border-radius: .4rem;
-        object-fit: cover;
+        object-fit: contain;
         margin:.3rem;  
     }
 }
@@ -90,4 +91,8 @@ $secondaryColor: #b7a3af;
 }
 .disabled{
     opacity: .3;
+}
+
+.hiddenActive{
+    display: none;
 }
