@@ -35,6 +35,7 @@ export const Store = () => {
       getAllWInes()
     }
   }, [actualPage])
+  
   useEffect(() => {
     getAllWInes()
     setSearch(true)
