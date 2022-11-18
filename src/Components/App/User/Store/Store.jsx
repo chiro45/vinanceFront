@@ -117,7 +117,7 @@ export const Store = () => {
             }
             <div className="storeContainerStore">
               {
-                (wines.length > 1)
+                (wines !== undefined  && wines.length > 1)
                   ?
                   wines.map((vino, i) => (
                     <div key={i} className="list animate__animated animate__animated">

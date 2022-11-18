@@ -85,7 +85,9 @@ export const ViewProduct = () => {
               vino.productActive.images
                 ?
                 vino.productActive.images.map((el, i) => (
-                  <img key={i} className="img" src={el.image} />
+                  <div key={i} className="imgProductView">
+                    <img key={i} className="img" src={el.image} />
+                  </div>
 
                 ))
                 : null
