@@ -6,7 +6,7 @@ import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "../../../Hooks/useForm"
 
-import {useState} from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { handleAddUser } from "../../../Reducers/UserReducer"
 
@@ -40,31 +40,30 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-       if(data.username){
-        {}
-         dispatch(handleAddUser(data.username,data.authorities))
-         localStorage.removeItem("token")
-        setTimeout(()=>{
-         localStorage.setItem("token", data.token)
-         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Haz Iniciado sesión correctamente!',
-          showConfirmButton: false,
-          timer: 800
-        })
-         navigate("/homeuser")
-        },50)
-       }
+        if (data.username) {
+          dispatch(handleAddUser(data.username, data.authorities))
+          localStorage.removeItem("token")
+          setTimeout(() => {
+            localStorage.setItem("token", data.token)
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Haz Iniciado sesión correctamente!',
+              showConfirmButton: false,
+              timer: 800
+            })
+            navigate("/homeuser")
+          }, 50)
+        }
       }
       )
       .catch((err) => {
         console.log(err);
-        Swal.fire("Intenta Nuevamente","Usuario o contraseña incorrecta","error")
+        Swal.fire("Intenta Nuevamente", "Usuario o contraseña incorrecta", "error")
       });
-    
- 
-    
+
+
+
   }
 
   return (
@@ -77,37 +76,37 @@ export const Login = () => {
             </div>
             <div className="container__itemsLogin-user">
               <label className="label__Login">Usuario</label>
-              <input 
-                name="user" 
-                value={user} 
-                onChange={handleInputChange} 
-                type={"text"} 
-                autoComplete="off" 
-                spellCheck="false" 
+              <input
+                name="user"
+                value={user}
+                onChange={handleInputChange}
+                type={"text"}
+                autoComplete="off"
+                spellCheck="false"
                 className="input__login" />
             </div>
             <div className="container__itemsLogin-passwd">
               <label className="label__Login">Contraseña</label>
-              <input 
-              name="password" 
-              value={password} 
-              onChange={handleInputChange} 
-              type={showPass ? "text": "password"} 
-              className="input__login" />
+              <input
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+                type={showPass ? "text" : "password"}
+                className="input__login" />
             </div>
             <div className="divCheckbox">
               <label>Mostrar Contraseña</label>
-              <input 
-              onChange={handleInputChange}  
-              name="showPass" 
-              value={showPass} 
-              type={"checkbox"} />
+              <input
+                onChange={handleInputChange}
+                name="showPass"
+                value={showPass}
+                type={"checkbox"} />
             </div>
             <div className="container__itemsLogin-linKregister ">
-              <a onClick={()=>{navigate("/register")}}>Registrarse <MDBIcon fas icon="user-plus" /></a>
+              <a onClick={() => { navigate("/register") }}>Registrarse <MDBIcon fas icon="user-plus" /></a>
             </div>
             <div className="container__itemsLogin-linKregister ">
-              <a onClick={()=>{navigate("/homeuser")}}> <MDBIcon fas icon="arrow-left" /> Volver a Inicio </a>
+              <a onClick={() => { navigate("/homeuser") }}> <MDBIcon fas icon="arrow-left" /> Volver a Inicio </a>
             </div>
 
             <div className="container__itemsLogin-buttonIngresar">

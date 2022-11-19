@@ -2,6 +2,7 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { getAlls } from "../../../../Helpers/HelpersFuntions"
 
 import { CardItemList } from "../../UI/CardsItemList/CardItemList"
 
@@ -49,29 +50,8 @@ export const Store = () => {
   }, [fetchType])
 
   const getAllWInes = () => {
-
-    const token = localStorage.getItem("token")
-    //TODO: tipo dinamico
-    fetch(`${process.env.REACT_APP_URLBASE}${fetchType}/${actualPage}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      }
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setPageable(data.totalPages - 1)
-        setWines(data.content)
-
-      })
-      .catch((err) => console.log(err));
-
+    getAlls(fetchType, actualPage, setPageable, setWines)
   }
-
-
-
   useEffect(() => {
     if (user.rol[0].authority === "ROLE_SELLER") {
       setUserMode("seller")
@@ -149,7 +129,6 @@ export const Store = () => {
                     }
                   </div>
                   : null
-
               }
             </div>
           </div>

@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import "../ModalWInes/../Modals.scss"
 import { AccessoriesCreateModify } from "./ModifyAccesories/AccessoriesCreateModify";
 import { CreateWinesModify } from "./ModifyWines/CreateWinesModify";
+import { deleteElements } from "../../../../../Helpers/HelpersFuntions";
 
 
 
@@ -22,32 +23,9 @@ getAllWInes  }) => {
   const [imagesAccesories, setImagesAccesories] = useState( [])
  
   const deleteElement = (typeDelete)=>{
+    deleteElements(typeDelete, vino.id, getAllWInes, closeModal)
   
-    const token = localStorage.getItem("token")
-    fetch(`${process.env.REACT_APP_URLBASE}${typeDelete=== "Wines" ? "Wines": "Accessories"}/${vino.id}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      }
-    })
-      .then((response) => {
-        getAllWInes() 
-        closeModal()
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Producto ha eliminado correctamente!',
-          showConfirmButton: false,
-          timer: 800
-        })
-        response.json() 
-    })
-      .then((data) => {})
-      .catch((err) => console.log(err));
   }
-  
 
 
   const closeModal = () => {

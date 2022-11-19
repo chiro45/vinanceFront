@@ -2,6 +2,7 @@
 import { MDBBtn, MDBIcon, MDBSelect } from "mdb-react-ui-kit";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import { fetchWinesAndProduct } from "../../../../../../Helpers/HelpersFuntions";
 import { useForm } from "../../../../../../Hooks/useForm";
 
 import "../../Modals.scss"
@@ -58,7 +59,6 @@ export const CreateWinesModify= ({
       }
 
       const modify =  async() => {
-        console.log(formValues)
         const token = localStorage.getItem("token")
           //fetch brand
           let idBrand = {}
@@ -80,44 +80,27 @@ export const CreateWinesModify= ({
             })
             .catch((err) => console.warn(err));
            //fetch wines
-    
-           await fetch(`${process.env.REACT_APP_URLBASE}wines/${vino.id}`, {
-             method: "PUT",
-             headers: {
-               Accept: "application/json, text/plain",
-               "Content-Type": "application/json",
-               "Authorization": `Bearer ${token}`
-             },
-             body: JSON.stringify({
-               name: name,
-               description: description,
-               price: price,
-               stock: stock,
-               active: active,
-               brand: { id: `${idBrand.id}` },
-               category: { id: `${category}`},
-               varietal: { id: `${varietal}` },
-               images: imagesWine
-             })
-           })
-             .then((response) => response.json())
-             .then((data) => {
-              
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Producto creado correctamente!',
-                showConfirmButton: false,
-                timer: 800
-              })
-              getAllWInes()
-               handleOpenModal()
-               {}
-             })
-             .catch((err) => {
-               console.log(err)
-               Swal.fire("Error", "Intenta nuevamente", "error")
-             });
+            await fetchWinesAndProduct(
+              {
+                name: name,
+                description: description,
+                price: price,
+                stock: stock,
+                active: active,
+                brand: { id: `${idBrand.id}` },
+                category: { id: `${category}`},
+                varietal: { id: `${varietal}` },
+                images: imagesWine
+              },
+              "wines",
+              vino.id,
+              "PUT",
+              "Producto modificado correctamente!",
+              "Intenta nuevamente!",
+              getAllWInes,
+              handleOpenModal
+
+            )
             }
   return (
     <div className="ContainerCreateWines">

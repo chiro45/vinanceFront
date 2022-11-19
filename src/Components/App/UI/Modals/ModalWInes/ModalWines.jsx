@@ -10,6 +10,7 @@ import { startUploading } from "../../../../../Helpers/fileUpload";
 import Swal from "sweetalert2";
 import { CreateWines } from "./AccesoryProductCreate/CreateWines";
 import { AccessoriesCreate } from "./WineProductCreate/AccessoriesCreate";
+import { fetchWinesAndProduct } from "../../../../../Helpers/HelpersFuntions";
 
 
 export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
@@ -74,78 +75,45 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
         })
         .catch((err) => console.warn(err));
        //fetch wines
-
-       await fetch(`${process.env.REACT_APP_URLBASE}wines`, {
-         method: "POST",
-         headers: {
-           Accept: "application/json, text/plain",
-           "Content-Type": "application/json",
-           "Authorization": `Bearer ${token}`
-         },
-         body: JSON.stringify({
-           name: name,
-           description: description,
-           price: price,
-           stock: stock,
-           active: active,
-           brand: { id: `${isBrand.id}` },
-           category: { id: `${category}` },
-           varietal: { id: `${varietal}` },
-           images: imagesWine
-         })
-       })
-         .then((response) => response.json())
-         .then((data) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto creado correctamente!',
-            showConfirmButton: false,
-            timer: 800
-          })
-          console.warn(data)
-          getAllWInes()
-           handleOpenModal()
-         })
-         .catch((err) => {
-           Swal.fire("Error", "Intenta nuevamente", "error")
-          console.warn(err)
-         });
+       await fetchWinesAndProduct(
+        {
+          name: name,
+          description: description,
+          price: price,
+          stock: stock,
+          active: active,
+          brand: { id: `${isBrand.id}` },
+          category: { id: `${category}` },
+          varietal: { id: `${varietal}` },
+          images: imagesWine
+        },
+        "wines",
+        "POST",
+        "Producto creado correctamente!",
+        "Intenta nuevamente",
+        getAllWInes,
+        handleOpenModal
+       )
+       
     } else {
       //fetch accesories
-      fetch(`${process.env.REACT_APP_URLBASE}accessories`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
+      await fetchWinesAndProduct(
+        {
           name: nameAccesories,
           description: descriptionAccesories,
           price: priceAccesories,
           stock: stockAccesories,
           active: activeAccesories,
           images: imagesAccesories,
-        })
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          handleOpenModal()
-          getAllWInes()
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto creado correctamente!',
-            showConfirmButton: false,
-            timer: 800
-          })
-          console.warn(data)
-        })
-        .catch((err) => {
-          Swal.fire("Error", "Intenta nuevamente", "error")
-          console.warn(err)
-        });
+        },
+        "accessories",
+        "POST",
+        "Producto creado correctamente!",
+        "Intenta nuevamente",
+        getAllWInes,
+        handleOpenModal
+       )
+      
     }
 
   }

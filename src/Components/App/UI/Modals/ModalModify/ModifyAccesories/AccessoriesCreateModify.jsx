@@ -1,6 +1,7 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import { fetchWinesAndProduct } from "../../../../../../Helpers/HelpersFuntions";
 import { useForm } from "../../../../../../Hooks/useForm";
 
 import "../../Modals.scss"
@@ -39,40 +40,25 @@ export const AccessoriesCreateModify = ({
    } = formValues
   
    const modify =  async() => {
-    const token = localStorage.getItem("token")
-  
-      fetch(`${process.env.REACT_APP_URLBASE}accessories/${vino.id}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json, text/plain",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name: nameAccesories,
-          description: descriptionAccesories,
-          price: priceAccesories,
-          stock: stockAccesories,
-          active: activeAccesories,
-          images: imagesAccesories,
-        })
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Producto Modificado correctamente!',
-            showConfirmButton: false,
-            timer: 800
-          })
-          handleOpenModal()
-          getAllWInes()
-        })
-        .catch((err) => {
-          Swal.fire("Error", "Intenta nuevamente", "error")
-          console.log(err)
-        });
+    await fetchWinesAndProduct(
+      {
+        name: nameAccesories,
+        description: descriptionAccesories,
+        price: priceAccesories,
+        stock: stockAccesories,
+        active: activeAccesories,
+        images: imagesAccesories,
+      },
+      "accessories",
+      vino.id,
+      "PUT",
+      "Producto modificado correctamente!",
+      "Intenta nuevamente!",
+      getAllWInes,
+      handleOpenModal
+
+    )
+      
   }
     return (
     <div className="ContainerCreateWines">
