@@ -44,7 +44,7 @@ getAllWInes  }) => {
         })
         response.json() 
     })
-      .then((data) => console.log(data))
+      .then((data) => {})
       .catch((err) => console.log(err));
   }
   

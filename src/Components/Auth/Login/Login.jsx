@@ -41,7 +41,7 @@ export const Login = () => {
       .then((response) => response.json())
       .then((data) => {
        if(data.username){
-        console.log(data)
+        {}
          dispatch(handleAddUser(data.username,data.authorities))
          localStorage.removeItem("token")
         setTimeout(()=>{

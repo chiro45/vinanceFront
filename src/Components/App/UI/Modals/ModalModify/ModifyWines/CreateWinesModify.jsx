@@ -112,7 +112,7 @@ export const CreateWinesModify= ({
               })
               getAllWInes()
                handleOpenModal()
-               console.log(data)
+               {}
              })
              .catch((err) => {
                console.log(err)
