@@ -50,7 +50,7 @@ export const Store = () => {
   }, [fetchType])
 
   const getAllWInes = () => {
-    getAlls(fetchType, actualPage, setPageable, setWines)
+   return getAlls(fetchType, actualPage, setPageable, setWines)
   }
   useEffect(() => {
     if (user.rol[0].authority === "ROLE_SELLER") {
