@@ -49,7 +49,6 @@ export const getAlls = ( fetchType,actualPage, setPageable, setWines)=>{
         .then((data) => {
           setPageable(data.totalPages - 1)
           setWines(data.content)
-
         })
         .catch((err) => console.log(err));
 

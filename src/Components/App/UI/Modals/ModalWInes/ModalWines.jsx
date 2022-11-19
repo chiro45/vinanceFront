@@ -88,6 +88,7 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
           images: imagesWine
         },
         "wines",
+        null,
         "POST",
         "Producto creado correctamente!",
         "Intenta nuevamente",
@@ -107,6 +108,7 @@ export const ModalWines = ({ openModal, handleOpenModal, getAllWInes }) => {
           images: imagesAccesories,
         },
         "accessories",
+        null,
         "POST",
         "Producto creado correctamente!",
         "Intenta nuevamente",
