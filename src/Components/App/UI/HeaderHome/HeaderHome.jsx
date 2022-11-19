@@ -15,7 +15,7 @@ export const HeaderHome = () => {
           <div className="inicio__ContainerTitle" onClick={()=>navigate("/homeuser")}>
             <h2>Vinance</h2>
             <div>
-              <img src="https://d2r9epyceweg5n.cloudfront.net/stores/097/048/themes/common/logo-1852450306-1480016030-12b8c3de573751b06e7fa6bd160efeda1512201795-480-0.png?0" alt="Wines Argentina Express" class="logo-img" />
+              <img src="https://d2r9epyceweg5n.cloudfront.net/stores/097/048/themes/common/logo-1852450306-1480016030-12b8c3de573751b06e7fa6bd160efeda1512201795-480-0.png?0" alt="Wines Argentina Express" className="logo-img" />
             </div>
           </div>
           <div className="HeaderContainerPricicpal__container-itemsUser">

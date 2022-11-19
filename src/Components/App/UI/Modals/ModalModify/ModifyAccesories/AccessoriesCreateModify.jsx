@@ -115,7 +115,7 @@ export const AccessoriesCreateModify = ({
                 {
 
                   imagesAccesories.map((el, i) => (
-                    <div className="containerImg">
+                    <div key={i} className="containerImg">
                       <img src={el.image} />
 
                       <MDBIcon onClick={() => handleDeleteImg('accesories', i)} fas icon="trash-alt" />

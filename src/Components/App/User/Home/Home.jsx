@@ -120,7 +120,7 @@ export const Home = () => {
             { path: "/store", text: "Vinos Premium", src: vinos },
             { path: "/turismo", text: "Turismo", src: turismo }
           ].map(({ text, src, path }) => (
-            <div onClick={() => { 
+            <div key={text} onClick={() => { 
               if(path === "/turismo"){
                 Swal.fire("Próximamente!", "Estamos trabajando en ello.", "warning")
             }else{
