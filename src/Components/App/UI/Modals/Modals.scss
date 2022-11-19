@@ -150,7 +150,7 @@ textarea{
     img{
       width: 10vh;
       height: 8vh;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 1rem;
     }
   }

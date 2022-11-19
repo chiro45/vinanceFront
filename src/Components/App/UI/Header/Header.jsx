@@ -7,6 +7,7 @@ import "./Header.scss"
 import { removeUser } from "../../../../Reducers/UserReducer"
 import { useForm } from "../../../../Hooks/useForm"
 import { useEffect } from "react"
+import Swal from "sweetalert2"
 export const Header = ({setWines, setPageable, actualPage,setActualPage, setSearch, Search}) => {
 
   const navigate = useNavigate()
@@ -76,19 +77,24 @@ export const Header = ({setWines, setPageable, actualPage,setActualPage, setSear
             <ul>
               {
               [
-                {text: "Mis Compras ",icon:"clipboard-check", path:"/store"},
+                {text: "Mis Compras",icon:"clipboard-check", path:"/store"},
                 {text: "Carrito ",icon:"shopping-cart", path:"/cart"},
-                {text: "Cerrar Sesion ",icon:"sign-in-alt", path:"/homeuser"},
+                {text: "Cerrar Sesion",icon:"sign-in-alt", path:"/login"},
               
               ].map(({text, icon, path},i)=>(
                 <li key={i} onClick={()=>{
+
                   if(text==="Cerrar Sesion"){
                     dispatch(removeUser())
                     localStorage.removeItem("token")
                     navigate(path)
+                  }else if(text ==="Mis Compras"){
+                    Swal.fire("Próximamente!", "Estamos trabajando en ello.", "warning")
+                    
                   }else{
                     navigate(path)
-                  } }} >{text} <MDBIcon fas icon={`${icon}`} /></li>
+                  } 
+                }} >{text} <MDBIcon fas icon={`${icon}`} /></li>
               ))
 
               }

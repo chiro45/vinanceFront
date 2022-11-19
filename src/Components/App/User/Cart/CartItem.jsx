@@ -42,7 +42,7 @@ export const CartItem = ({item}) => {
     <p>Cantidad:{item.cant}</p>
     <p>Precio del producto: {item.item.price }</p>
     {item.cant >1
-        ? <p>Precio a pagar: {item.item.price * item.cant}</p>
+        ? <p>Precio a pagar: {Math.round(item.item.price * item.cant)}</p>
         : null
     }
     <div>

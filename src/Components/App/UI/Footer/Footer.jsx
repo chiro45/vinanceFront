@@ -62,10 +62,8 @@ export const Footer = () => {
         </section>
 
         <section className='mb-4'>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
-            voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+          <p className='fs-4'>
+            Integrantes: Federico Pitton, Luciano Chiroli, Lautaro Jofre, Maximiliano Zuñiga, Candela Zuñiga
           </p>
         </section>
 

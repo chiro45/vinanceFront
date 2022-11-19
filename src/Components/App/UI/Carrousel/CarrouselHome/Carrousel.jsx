@@ -17,40 +17,40 @@ export const Carrousel = () => {
         src={img1}
         alt='...'
       >
-        <h5>Bodega</h5>
-        <p>bodegosa</p>
+        <h5>High Risk, High Reward Single Vineyard Wines.</h5>
+        <p>Hartford Family Winery es una bodega familiar ubicada en el área de Russian River en el condado de Sonoma. La bodega está especializada en Pinot Noir, Chardonnay y Zinfandel de viña vieja. Los vinos producidos expresan el carácter de sus singulares viñedos.</p>
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem" 
         itemId={2}
         src={img2}
         alt='...'
       >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Cambria Wine Club.</h5>
+        <p>Venga a disfrutar de unos exquisitos vinos en nuestro hotel Cambria State Winery.</p>
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={3}
         src={img3}
         alt='...'
       >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Experiencia por los viñedos.</h5>
+        <p>Puede disfrutar y observar en primera persona de nuestros amados viñedos.</p>
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={4}
         src={img4}
         alt='...'
       >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Bodega Vistalba 2018.</h5>
+        <p>Foto de videños DOC de Malbec.</p>
       </MDBCarouselItem>
       <MDBCarouselItem className="carrouselItem"
         itemId={5}
         src={img5}
         alt='...'
       >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h5>Bodega Cambria 2010.</h5>
+        <p>Foto de viñedos Cabernet Suavignon.</p>
       </MDBCarouselItem>
 
      

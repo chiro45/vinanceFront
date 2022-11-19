@@ -70,7 +70,7 @@ const handleCompra = ()=>{
             <MDBBtn onClick={handleCompra} color="success">Confirmar Compra</MDBBtn>
         </div>
        <div className="containerTotal">
-                <p>Precio total: {state}</p>
+                <p>Precio total: {Math.round(state)}</p>
        </div>
        </div>
     </div>

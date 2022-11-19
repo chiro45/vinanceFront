@@ -1,6 +1,7 @@
 $primaryColor: #9b205c;
 $secondaryColor: #b7a3af;
-.containerPrincipalStore{
+
+.containerPrincipalStore {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +12,7 @@ $secondaryColor: #b7a3af;
 }
 
 
-.storeContainer{
+.storeContainer {
     display: grid;
     grid-template-columns: 10vw 60vw;
     width: 70vw;
@@ -20,105 +21,139 @@ $secondaryColor: #b7a3af;
 
 
 
-.storeContainerStore{
+.storeContainerStore {
     background-color: #fff;
     margin-top: 2rem;
-    border-radius:.45rem;
-    min-height:80vh;
+    border-radius: .45rem;
+    min-height: 80vh;
     max-height: 80vh;
-    overflow-y: auto    ;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(4, 1.5fr);
-    
 
- 
+
+
 }
 
 @media (max-width: 1366px) {
-    .storeContainerStore{
+    .storeContainerStore {
         grid-template-columns: repeat(3, 1.5fr);
     }
-  }
+}
 
-.list{
-    background-color: #fff;
+.list {
+
     border-radius: .4rem;
     margin: 2rem;
 
 }
-.storeContainerBar{
+
+.containersaso {
+    background-color: #fff;
+    max-height: 80vh;
+    min-height: 80vh;
+    margin-top: 2rem;
+}
+
+.storeContainerBar {
     margin-top: 3vh;
-    background-color: #ebebeb;
     width: 100%;
     display: flex;
     flex-direction: column;
-  
+
 }
-.divList{
+
+.divList {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    h2{
+
+    h2 {
         font-size: 2vw;
         margin-left: -1vw;
     }
-    ul{
+
+    ul {
         list-style: none;
         text-align: justify;
         margin-left: -1.6vw;
         margin-top: -.4vh;
-        li{
+
+        li {
             font-size: 1vw;
             cursor: pointer;
             text-align: justify;
             text-decoration: none;
-                transition: .3s ease transform;
-                &:hover{
-                 transform: scale(1.1);
-                }
+            transition: .3s ease transform;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
-        
+
     }
 
 }
-.CardContainerItemList__buttonStore{
+
+.CardContainerItemList__buttonStore {
     width: 95%;
     display: flex;
     justify-content: flex-end;
-    button{
+
+    button {
         background-color: $primaryColor !important;
         font-size: 0.6vw;
         margin-top: 1rem;
         margin-bottom: -1rem;
-       
+
     }
-    button:hover{
+
+    button:hover {
         background-color: lighten($color: $primaryColor, $amount: 10) !important;
     }
 }
-.containersas{
-  max-height: 80vh;
-} 
 
-.containerPaginate{
+.containersas {
+    max-height: 80vh;
+}
+
+.containerPaginate {
     display: flex;
     margin-top: 1rem;
     justify-content: flex-end;
     margin-bottom: -1rem;
-    button{
+
+    button {
         margin-left: .4rem;
     }
 }
-.containerNUmber{
+
+.containerNUmber {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     height: 100%;
     width: 5%;
-    p{
+
+    p {
         text-align: center;
         font-size: 1vw;
         margin: .4rem
-    };
+    }
+
+    ;
+}
+.containerEsperandoVinos{
+   width: 150%;
+   text-align: center;
+    margin-top: 2rem;
+}
+
+.containerPagination{
+    display: flex;
+    justify-content: space-around;
+    .prevPage{
+        margin-left: -.5rem;
+    }
 }

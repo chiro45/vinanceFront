@@ -45,17 +45,20 @@ export const CreateWinesModify= ({
       category,
       varietal
       } = formValues
-      const handleSelect = (e, type) => {
 
+
+      const handleSelect = (e, type) => {
+         
         if (type === "varietal") {
-          formValues.varietal = e.value
+          varietal = e.value
         } else {
-          formValues.category = e.value
+         category = e.value
         }
     
       }
 
       const modify =  async() => {
+        console.log(formValues)
         const token = localStorage.getItem("token")
           //fetch brand
           let idBrand = {}

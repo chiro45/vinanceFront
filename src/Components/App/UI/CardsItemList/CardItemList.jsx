@@ -70,7 +70,7 @@ export const CardItemList = ({ vino, userMode, type, getAllWInes  }) => {
                     <div className="CardContainerItemList__Nombre"><p>{name}</p></div>
                     {
                         discount !== undefined
-                            ? <div className="CardContainerItemList__precio"><p className="tachado">${price}</p></div>
+                            ? <div className="CardContainerItemList__precio"><p className="tachado">${discount}</p></div>
                             : null
                     }
                     <div className="CardContainerItemList__precio"><p>${price}</p></div>

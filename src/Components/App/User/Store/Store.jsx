@@ -22,7 +22,14 @@ export const Store = () => {
   const [wines, setWines] = useState([])
   const [pageable, setPageable] = useState(0)
   const [actualPage, setActualPage] = useState(0)
+  const [change, setChange] = useState(false)
+  useEffect(() => {
+    setChange(true)
+    setTimeout(() => {
+      setChange(false)
+    }, 500)
 
+  }, [wines])
   const handlePageable = (option) => {
     if (actualPage < pageable && option === "increment") {
       setActualPage(actualPage + 1)
@@ -35,7 +42,7 @@ export const Store = () => {
       getAllWInes()
     }
   }, [actualPage])
-  
+
   useEffect(() => {
     getAllWInes()
     setSearch(true)
@@ -92,6 +99,7 @@ export const Store = () => {
             setActualPage={setActualPage}
             setFetchType={setFetchType} />
           <div >
+            <div className={userMode === "seller" ?"containerPagination": ""}>
             {userMode === "seller"
               ?
               <div className="CardContainerItemList__buttonStore">
@@ -105,7 +113,7 @@ export const Store = () => {
                 ?
                 <div className="containerPaginate">
                   <div className="containerNUmber">
-                    <p>{actualPage + 1}</p>
+                    <p className="prevPage">{actualPage + 1}</p>
                   </div>
                   <MDBBtn onClick={() => { handlePageable("decrement") }}><MDBIcon fas icon="angle-double-left" /></MDBBtn>
                   <MDBBtn onClick={() => { handlePageable("increment") }}><MDBIcon fas icon="angle-double-right" /></MDBBtn>
@@ -115,24 +123,33 @@ export const Store = () => {
                 </div>
                 : null
             }
-            <div className="storeContainerStore">
+            </div>
+            <div className="containersaso">
               {
-                (wines !== undefined  && wines.length > 1)
+                change === false
                   ?
-                  wines.map((vino, i) => (
-                    vino.active=== false && userMode !== "seller"
-                    ? null
-                    : <div key={i} className="list animate__animated animate__animated">
-                    <CardItemList
-                      getAllWInes={getAllWInes}
-                      type={vino.type}
-                      vino={vino}
-                      userMode={userMode}
-                    />
-                  </div>
+                  <div className="storeContainerStore animate__animated animate__bounceInRight">
+                    {
+                      (wines !== undefined && wines.length > 1)
+                        ?
+                        wines.map((vino, i) => (
+                          vino.active === false && userMode !== "seller"
+                            ? null
+                            : <div key={i} className="list animate__animated animate__animated">
+                              <CardItemList
+                                getAllWInes={getAllWInes}
+                                type={vino.type}
+                                vino={vino}
+                                userMode={userMode}
+                              />
+                            </div>
 
-                  ))
-                  : <h1>Esperando Vinos</h1>
+                        ))
+                        : <div className="containerEsperandoVinos"><h1 >Esperando Vinos</h1></div>
+                    }
+                  </div>
+                  : null
+
               }
             </div>
           </div>

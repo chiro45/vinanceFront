@@ -7,6 +7,7 @@ import turismo from "../../../../Assets/imgs/turismo.jpeg"
 import vinos from "../../../../Assets/imgs/vinos.jpg"
 import "./Home.scss"
 import { HeaderHome } from "../../UI/HeaderHome/HeaderHome"
+import Swal from "sweetalert2"
 
 
 export const Home = () => {
@@ -18,12 +19,12 @@ export const Home = () => {
       brand: { id: 19, brand: 'Giorgio Gieco' },
       category: { id: 1, category: 'Malbec' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-      discount: 4356,
+      discount: 4300,
       images: [
         { id: 34, image: 'https://images.vivino.com/thumbs/WtMN5CptRACOR_oqitzXVw_pb_600x600.png' }
       ],
       name: "Giorgio Gieco - Malbec Special Selection ",
-      price: 1500,
+      price: 2800,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
       varietal: { id: 2, varietal: 'Cabernet Suavignon' },
@@ -35,12 +36,12 @@ export const Home = () => {
       brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-      discount: 4356,
+      discount: 5300,
       images: [
-        { id: 34, image: 'https://www.andbank.es/observatoriodelinversor/wp-content/uploads/2014/10/vino.jpg' }
+        { id: 34, image: 'https://res.cloudinary.com/dka1fqaps/image/upload/v1668799742/m7ukxgxeo08vbfn1d9em.png' }
       ],
       name: "2016 MESA TERRACE PINOT NOIR",
-      price: 1500,
+      price: 3000,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
       varietal: { id: 2, varietal: 'Cabernet Suavignon' },
@@ -52,12 +53,12 @@ export const Home = () => {
       brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-      discount: 4356,
+      discount: 5500,
       images: [
         { id: 34, image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/812/913/products/es-cs-161-66ec632412bcb31d3a15435061546040-1024-1024.jpg' }
       ],
       name: "Vino Alta Vista Estate Premium",
-      price: 1500,
+      price: 2000,
       stock: 2050,
       brand: { id: 2, brand: 'Cabernet Suavignon' },
       varietal: { id: 2, varietal: 'Cabernet Suavignon' },
@@ -69,7 +70,7 @@ export const Home = () => {
       brand: { id: 19, brand: 'Vino Tor' },
       category: { id: 1, category: 'Tinto' },
       description: "Sus características organolépticas más  A la generosa graduación que suelen tener sus vinos se añaden tintos con un gran cuerpo, color intenso y una importante presencia tánica.",
-      discount: 4356,
+      discount: 3000,
       images: [
         { id: 34, image: 'http://d3ugyf2ht6aenh.cloudfront.net/stores/001/211/660/products/maljunta-cab-fran-res1-071eba501bca83feae16146969257952-640-0.png' }
       ],
@@ -91,7 +92,7 @@ export const Home = () => {
       <Carrousel />
       <div className="Home__containerprodDestacados">
         <b></b>
-        <h2>Ofertas</h2>
+        <h2>Productos recomendados</h2>
         <b></b>
       </div>
 
@@ -115,11 +116,17 @@ export const Home = () => {
       <div className="Container__accesories">
         {
           [
-            { path: "/storeaccesories", text: "Accesorios", src: "https://www.dulcehogar.mx/wp-content/uploads/2020/04/Accesorios-para-vino-0.jpg" },
-            { path: "/vinos", text: "Vinos Premium", src: vinos },
+            { path: "/store", text: "Accesorios", src: "https://www.dulcehogar.mx/wp-content/uploads/2020/04/Accesorios-para-vino-0.jpg" },
+            { path: "/store", text: "Vinos Premium", src: vinos },
             { path: "/turismo", text: "Turismo", src: turismo }
           ].map(({ text, src, path }) => (
-            <div onClick={() => { navigate(path) }} style={{ backgroundImage: `url(${src})` }} className="containerAccesories">
+            <div onClick={() => { 
+              if(path === "/turismo"){
+                Swal.fire("Próximamente!", "Estamos trabajando en ello.", "warning")
+            }else{
+              navigate(path)
+            }}
+            } style={{ backgroundImage: `url(${src})` }} className="containerAccesories">
               <h2>{text}</h2>
             </div>
           ))
