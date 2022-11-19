@@ -1,4 +1,5 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick/lib/slider"
@@ -13,7 +14,15 @@ export const ViewProduct = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.userReducer)
   const vino = useSelector(state => state.productReducer)
+  const [userMode, setUserMode] = useState("user")
 
+  useEffect(() => {
+    if (user.rol[0].authority === "ROLE_SELLER") {
+      setUserMode("seller")
+    } else if (user.rol[0].authority === "ROLE_USER") {
+      setUserMode("user")
+    }
+  }, [user]);
   const settings = {
     dots: true,
     infinite: true,
@@ -142,14 +151,22 @@ export const ViewProduct = () => {
           <div className="containerPropProduct__h4">
             <h4>Cantidad: {vino.productActive.stock}</h4>
           </div>
-          <div className="containerCompra">
+          {
+              userMode ==="user"
+         ? <div className="containerCompra">
             <div className="containerCompraInput">
               <input type={"number"} value={cant} name="cant" onChange={handleInputChange} placeholder="cantidad" min="1" />
             </div>
-            <div>
+            
               <MDBBtn onClick={handleAddToCart}>Añadir al carrito <MDBIcon fas icon="cart-plus" /></MDBBtn>
+            
+            <div>
             </div>
+             
+
           </div>
+           : null
+          }
           <div className="containerDescription">
             <p>Descripcion: <br /> {vino.productActive.description}</p>
           </div>
