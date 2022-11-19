@@ -78,3 +78,11 @@ export const deleteElements =  (typeDelete,id, getAllWInes, closeModal )=>{
         
         .catch((err) => console.log(err));
 }
+export const validateEmail = (email = "")=>{
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  if(email.match(regex) !== null){
+    return true
+  }else {
+    return false
+  }
+}

@@ -2,6 +2,7 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import { validateEmail } from "../../../Helpers/HelpersFuntions"
 import { useForm } from "../../../Hooks/useForm"
 import "./Register.scss"
 export const Register = () => {
@@ -22,11 +23,21 @@ export const Register = () => {
     name,
     password,
     passwordConfirm,
-    email,
+    email = "",
   } = formValues
 
   const onRegister = () => {
-    if (password === passwordConfirm) {
+    
+
+    if( email.length < 2 || validateEmail(email) !== true){
+      return  Swal.fire("Error!", "Email Incorrecto!", "error")
+    }
+    else if( user.length < 4 || name.length < 4){
+      return  Swal.fire("Error!", "Usuario o nombre incorrecto!", "error")
+    }
+    else if (password !== passwordConfirm){
+       return Swal.fire("Error!", "Contraseñas no coinciden", "error")
+     }else{
       fetch(`${process.env.REACT_APP_URLBASE}auth/register`, {
         method: "POST",
         headers: {
@@ -38,7 +49,7 @@ export const Register = () => {
           name: name,
           email: email,
           password: password,
-
+  
         })
       })
         .then((response) => response.json())
@@ -60,9 +71,10 @@ export const Register = () => {
           console.log(err);
           Swal.fire("Error!", "Hubo un error intenta nuevamente", "error")
         });
-    } else {
-      Swal.fire("Error!", "Contraseñas no coinciden", "error")
-    }
+     
+     }
+     
+      
 
 
   }
