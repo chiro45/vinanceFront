@@ -2,6 +2,7 @@ import { MDBIcon } from "mdb-react-ui-kit"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import { removesToCart } from "../../../../Actions/Cart"
 import { removeUser } from "../../../../Reducers/UserReducer"
 
 
@@ -30,6 +31,7 @@ export const HeaderHome = () => {
                   <li key={i} onClick={()=>{
                     if(text==="Cerrar Sesion"){
                       dispatch(removeUser())
+                      dispatch(removesToCart())
                       localStorage.removeItem("token")
                       navigate(path)
                     }else if(text ==="Mis Compras"){

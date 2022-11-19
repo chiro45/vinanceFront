@@ -1,6 +1,6 @@
 
 
-import { MDBBtn, MDBIcon, MDBInput } from "mdb-react-ui-kit"
+import { MDBBtn, MDBIcon } from "mdb-react-ui-kit"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import "./Header.scss"
@@ -8,6 +8,7 @@ import { removeUser } from "../../../../Reducers/UserReducer"
 import { useForm } from "../../../../Hooks/useForm"
 import { useEffect } from "react"
 import Swal from "sweetalert2"
+import { removesToCart } from "../../../../Actions/Cart"
 export const Header = ({setWines, setPageable, actualPage,setActualPage, setSearch, Search}) => {
 
   const navigate = useNavigate()
@@ -86,6 +87,7 @@ export const Header = ({setWines, setPageable, actualPage,setActualPage, setSear
 
                   if(text==="Cerrar Sesion"){
                     dispatch(removeUser())
+                    dispatch(removesToCart())
                     localStorage.removeItem("token")
                     navigate(path)
                   }else if(text ==="Mis Compras"){
